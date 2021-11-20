@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Ciclo4Reto1Application<Ciclo4Reto1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.Reto1.springboot.app.Ciclo4Reto1Application",
+            "projectName": "Ciclo4Reto1",
+            "args": ""
+        }
+    ]
+}
