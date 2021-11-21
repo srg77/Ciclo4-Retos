@@ -21,11 +21,11 @@ public class UserService {
         return metodosCrud.getUser(userId);
     }
     public boolean getValidationEmail (String userEmail){
-        if(metodosCrud.validateEmail(userEmail).isEmpty()){
-            return false;
-        }
-        else{
+        
+        if (metodosCrud.validateEmail(userEmail).isPresent()) {
             return true;
+        } else {
+            return false;
         }
     }
     public User getValidationCredentials (String userEmail, String userPassword){
@@ -33,7 +33,7 @@ public class UserService {
         User respuestaCredenciales;
         Optional<User> respuesta = metodosCrud.validateCredentials(userEmail, userPassword);
         
-        if (respuesta.isEmpty()){
+        if (!respuesta.isPresent()){
             respuestaCredenciales = new User(null, userEmail, "NO DEFINIDO",userPassword );
         }else{
             respuestaCredenciales = respuesta.get();
