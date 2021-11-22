@@ -3,19 +3,17 @@
 // })
 
 function registerUser(){
-    
- 
-
-    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (emailRegex.test($("#user_email").val())){
-        let user = {
+    let user = {
         
-            email: $("#user_email").val(),
-            password: $("#user_password").val(),
-            name: $("#user_name").val()
-        };
+        email: $("#user_email").val(),
+        password: $("#user_password").val(),
+        name: $("#user_name").val()
+    };
     
-        if (validateUser(user)){
+    if (validateUser(user)){
+        
+        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if (emailRegex.test($("#user_email").val())){
             $.ajax({
     
                 //url asignar de acuerdo a cada maquina
@@ -37,14 +35,17 @@ function registerUser(){
     
                 }
             });
+
+        }else {
+            $("#user_email").css("border", "1px solid yellow");
+            $("#badEmail").css("display", "block");
+            $("#badEmail").text("La direccion de correo es invalida");
+    
         }
-        
-    } else {
-        $("#user_email").css("border", "1px solid yellow");
-        $("#badEmail").css("display", "block");
-        $("#badEmail").text("La direccion de correo es invalida");
-        
+
     }
+        
+    
     
    
 }

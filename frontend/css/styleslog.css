@@ -32,4 +32,6 @@ body{
     background: rgb(100, 200, 255);
     cursor: pointer;
   }
-
+.badEmail{
+  color: red;
+}
