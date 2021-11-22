@@ -6847,7 +6847,8 @@ textarea.form-control-lg {
 }
 
 .border {
-  border: 1px solid #dee2e6 !important;
+  border: 1px solid #212529 !important;
+  
 }
 
 .border-0 {
@@ -11406,7 +11407,7 @@ p {
   }
 }
 .back-register{
-  color: #fff;
+  color: #212529;
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
