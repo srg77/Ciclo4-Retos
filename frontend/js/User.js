@@ -1,45 +1,42 @@
-$(document).ready(function() {
-    checkUser() //Consulta de usuarios
-})
+// $(document).ready(function() {
+//     // checkUser() //Consulta de usuarios
+// })
 
 function registerUser(){
     let user = {
-        name: $("#user_name").val(),
+        
         email: $("#user_email").val(),
-        password: $("#user_password").val()
+        password: $("#user_password").val(),
+        name: $("#user_name").val()
     };
-    
+
     if (validateUser(user)){
         $.ajax({
-            url: url+"",
+
+            //url asignar de acuerdo a cada maquina
+            url: 'http://152.70.141.56:8080/api/user/new',
             type: 'POST',
-            dataType: 'json',
-            headers: {
-                "Content-Type": "application/json"
-            },
             data: JSON.stringify(user),
-            statusCode:{
-                201:function(){
-                    alert('Se ha registrado el usuario');
-                    checkUser()
-                    cleanFieldsUser()
-                },
-                555:function(){
-                    alert('Ya existe un usuario con ese id')
-                }
+            contentType  : "application/json;charset-UTF-8",
+            dataType: 'json',
+            
+            success      :  function(response){
+                                console.log(response);
+                                alert("Cuenta creada de forma correcta")
+            },
+            error       :   function(xhr,status){
+                                console.log(status);
+                                alert("No fue posible crear la cuenta")
             }
         });
     }
-    
-    
-
 }
 
 
 function checkUser(){
     $("#table_User").empty();
     $.ajax({
-        url: url+ "",
+        url: 'http://152.70.141.56:8080/api/user/all',
         type: 'GET',
         dataType: 'json',
         success: function(respuesta){
@@ -164,7 +161,7 @@ function validateUser(user){
         alert("Procure no dejar campos vacíos")
         return false;
     }else if (user.name.length>80){
-        alert('Contenido demasiado extenso. Solamente puede tener hasta 80 caracteres')
+        alert('Nombre demasiado extenso. Solamente puede tener hasta 80 caracteres')
         return false;
     }
     else if (user.password.length>50){

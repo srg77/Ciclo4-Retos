@@ -1,34 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/url.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/User.js"></script> 
-    <title>Clientes</title>
-</head>
-<body>
 
-    <h1>Usuarios</h1>
-    <h4>Registrar un Usuario</h4>
-    ID <input type="number" id="id_user" /> <br />
-    <form novalidate>
-        <p>
-          <label for="mail">
-            <span>Por favor, introduzca una dirección de correo electrónico: </span>
-            <input type="email" id="mail" name="mail" required minlength="8">
-            <span class="error" aria-live="polite"></span>
-          </label>
-        </p>
-    </form>
-    Name <input type="text" id="user_name" /> <br />
-    Email <input type="email" id="user_email" /> <br />
-    Password <input type="password" id="user_password" /> <br>
-    <button onclick="registerUser()">Guardar</button>
-    <a href="inicio.html">Volver al inicio</a>
-    <div id="table_User">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <link href="css/styles.css" rel="stylesheet" />
+  <title>Clientes</title>
+</head>
+
+<body class="back-register">
+
+  <div class="container  h-100 w-50 d-flex justify-content-center align-items-center">
+
+    <div class="container border">
+      <div class="row p-5">
+        <h1 class="mb-4">Crea tu cuenta</h1>
+        <!-- <h4>Registrar un Usuario</h4> -->
+        <form novalidate>
+          <div class="mb-3 ">
+            <label for="user_name" class="form-label">Name</label>
+            <input type="text" id="user_name" class="form-control" required/>
+          </div>
+    
+          <div class="mb-3 ">
+            <label for="user_email" class="form-label">
+              Email
+              <span class="error" aria-live="polite"></span>
+            </label>
+            <input type="email" id="user_email" name="mail" required minlength="8" class="form-control" required/>
+          </div>
+    
+          <div class="mb-3 ">
+            <label for="user_password" class="form-label">Password</label>
+            <input type="password" id="user_password" class="form-control" required/>
+          </div>
+    
+          <div class="mb-3 ">
+            <button  class="btn btn-primary" onclick="registerUser()">
+              Guardar
+            </button>
+          </div>
+    
+          <div class="mb-3 ">
+            <a href="inicio.html">Volver al inicio</a>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+
+  <div class="container mb-3">
+    <div id="table_User"></div>
+  </div>
+  
+
+  <script src="js/url.js"></script>
+  <script type="text/javascript" src="js/user.js"></script>
 </body>
+
 </html>
