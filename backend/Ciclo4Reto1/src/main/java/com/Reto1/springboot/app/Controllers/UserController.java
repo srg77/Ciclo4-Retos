@@ -21,12 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/user")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+/**
+ * Clase controladora de rutas para usuario
+ */
 public class UserController {
 
     @Autowired
+    /**
+    * objeto servicio
+    */
     private UserService servicio;
   
     @GetMapping("/all")
+    /**
+    * mapeo para obtener la lista de usuarios
+    */
     public List<User> getClients(){
         return servicio.getAll();
     }
@@ -35,15 +44,24 @@ public class UserController {
     //     return servicio.getUser(userId);
     // }
     @GetMapping("/{email}")
+    /**
+    * mapeo para obtener la validación de un email
+    */
     public boolean getUser(@PathVariable("email") String userEmail) {
         return servicio.getValidationEmail(userEmail);
     }
     @GetMapping("/{email}/{password}")
+    /**
+    * mapeo para validar las credenciales de un usuario
+    */
     public User getAccess(@PathVariable("email") String userEmail, @PathVariable("password") String userPassword) {
         return servicio.getValidationCredentials(userEmail, userPassword);
     }
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
+    /**
+    * mapeo para registrar un nuevo usuario
+    */
     public User save(@RequestBody User user) {
         return servicio.save(user);
     }
