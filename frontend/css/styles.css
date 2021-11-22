@@ -75,6 +75,17 @@
     scroll-behavior: smooth;
   }
 }
+.back-register1{
+  
+  background-image: url("../assets/img/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+
+}
+
 
 body {
   margin: 0;
