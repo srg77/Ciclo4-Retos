@@ -3,37 +3,52 @@
 // })
 
 function registerUser(){
-    let user = {
+    
+ 
+
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (emailRegex.test($("#user_email").val())){
+        let user = {
         
-        email: $("#user_email").val(),
-        password: $("#user_password").val(),
-        name: $("#user_name").val()
-    };
-
-    if (validateUser(user)){
-        $.ajax({
-
-            //url asignar de acuerdo a cada maquina
-            url: 'http://152.70.141.56:8080/api/user/new',
-            type: 'POST',
-            data: JSON.stringify(user),
-            contentType  : "application/json;charset-UTF-8",
-            dataType: 'json',
-            
-            success      :  function(response){
-                                console.log(response);
-                                alert("Cuenta creada de forma correcta");
-                                cleanFieldsUser();
-            },
-            error       :   function(xhr,status){
-                                console.log(status);
-                                alert("No fue posible crear la cuenta");
-                                cleanFieldsUser();
-
-            }
-        });
+            email: $("#user_email").val(),
+            password: $("#user_password").val(),
+            name: $("#user_name").val()
+        };
+    
+        if (validateUser(user)){
+            $.ajax({
+    
+                //url asignar de acuerdo a cada maquina
+                url: 'http://152.70.141.56:8080/api/user/new',
+                type: 'POST',
+                data: JSON.stringify(user),
+                contentType  : "application/json;charset-UTF-8",
+                dataType: 'json',
+                
+                success      :  function(response){
+                                    console.log(response);
+                                    alert("Cuenta creada de forma correcta");
+                                    cleanFieldsUser();
+                },
+                error       :   function(xhr,status){
+                                    console.log(status);
+                                    alert("No fue posible crear la cuenta, el usuario ya existe");
+                                    cleanFieldsUser();
+    
+                }
+            });
+        }
+        
+    } else {
+        $("#user_email").css("border", "1px solid yellow");
+        $("#badEmail").css("display", "block");
+        $("#badEmail").text("La direccion de correo es invalida");
+        
     }
+    
+   
 }
+
 
 
 function checkUser(){
@@ -160,7 +175,7 @@ function removeUser(id){
 }
 
 function validateUser(user){
-    if (user.id<=0|| user.name===''|| user.email==='' || user.password===''){
+    if (user.name==="" || user.email==="" || user.password===""){
         alert("Procure no dejar campos vacíos")
         return false;
     }else if (user.name.length>80){

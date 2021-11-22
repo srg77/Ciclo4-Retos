@@ -108,6 +108,9 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-weight: 700;
   line-height: 1.2;
 }
+.badEmail{
+  color: red;
+}
 
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
@@ -6847,8 +6850,7 @@ textarea.form-control-lg {
 }
 
 .border {
-  border: 1px solid #212529 !important;
-  
+  border: 1px solid #dee2e6 !important;
 }
 
 .border-0 {
@@ -11407,7 +11409,7 @@ p {
   }
 }
 .back-register{
-  color: #212529;
+  color: #fff;
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
