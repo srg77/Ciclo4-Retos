@@ -22,11 +22,14 @@ function registerUser(){
             
             success      :  function(response){
                                 console.log(response);
-                                alert("Cuenta creada de forma correcta")
+                                alert("Cuenta creada de forma correcta");
+                                cleanFieldsUser();
             },
             error       :   function(xhr,status){
                                 console.log(status);
-                                alert("No fue posible crear la cuenta")
+                                alert("No fue posible crear la cuenta");
+                                cleanFieldsUser();
+
             }
         });
     }
