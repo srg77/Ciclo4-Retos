@@ -1,0 +1,71 @@
+.back-color{
+    background-color: #e9ecef78;
+}
+.back-register{
+    
+    background-image: url("../assets/img/header-bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+  .btn-primary {
+    color: #212529;
+    background-color: #ffc800;
+    border-color: #ffc800;
+  }
+  .btn-primary:hover {
+    color: #212529;
+    background-color: #d9aa00;
+    border-color: #cca000;
+  }
+  .btn-check:focus + .btn-primary, .btn-primary:focus {
+    color: #212529;
+    background-color: #d9aa00;
+    border-color: #cca000;
+    box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+  }
+  .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+    color: #212529;
+    background-color: #cca000;
+    border-color: #bf9600;
+  }
+  .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+  }
+  .btn-primary:disabled, .btn-primary.disabled {
+    color: #212529;
+    background-color: #ffc800;
+    border-color: #ffc800;
+  }
+  .btn-info {
+    color: #212529;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+  }
+  .btn-info:hover {
+    color: #212529;
+    background-color: #0baccc;
+    border-color: #0aa2c0;
+  }
+  .btn-check:focus + .btn-info, .btn-info:focus {
+    color: #212529;
+    background-color: #0baccc;
+    border-color: #0aa2c0;
+    box-shadow: 0 0 0 0.25rem rgba(49, 210, 242, 0.5);
+  }
+  .btn-check:checked + .btn-info, .btn-check:active + .btn-info, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+    color: #212529;
+    background-color: #0aa2c0;
+    border-color: #0a98b4;
+  }
+  .btn-check:checked + .btn-info:focus, .btn-check:active + .btn-info:focus, .btn-info:active:focus, .btn-info.active:focus, .show > .btn-info.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(49, 210, 242, 0.5);
+  }
+  .btn-info:disabled, .btn-info.disabled {
+    color: #212529;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+  }

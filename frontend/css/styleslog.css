@@ -1,0 +1,52 @@
+/* body{
+  width: 100%;
+  height: 1000px; */
+  
+  /* fallback for old browsers */
+  /* background: #aa4b6b;   */
+  /* Chrome 10-25, Safari 5.1-6 */	
+  /* background: -webkit-linear-gradient(to right, rgba(59, 140, 153, 0.596), rgba(107, 107, 131, 0.568), rgba(170, 75, 107, 0.548)),url(../assets/img/login/header-bg.jpg);   */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* background: linear-gradient(to right, rgba(59, 140, 153, 0.534), rgba(107, 107, 131, 0.562), rgba(170, 75, 107, 0.589)),url(../assets/img/header-bg.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover; */
+/* } */
+
+.back-color{
+  background-color: #e9ecef78;
+}
+.back-register{
+  
+  background-image: url("../assets/img/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form input {
+    width: 90%;
+    height: 30px;
+    margin: 0.5rem;
+  }
+  
+  .form button {
+    padding: 0.5em 1em;
+    border: none;
+    background: rgb(100, 200, 255);
+    cursor: pointer;
+  }
+.badEmail{
+  color: red;
+}
