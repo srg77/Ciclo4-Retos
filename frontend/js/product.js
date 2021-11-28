@@ -39,7 +39,7 @@ function saveProduct(){
 
 
 function checkProduct(){
-    $("#table_XXXXXX").empty();
+    $("#table_Chocolate").empty();
     $.ajax({
         url: url + '/api/chocolate/all',
         type: 'GET',
@@ -78,13 +78,15 @@ function showProducts(items){
                    <td>${items[i].quantity}</td>
                    <td>${items[i].photography}</td>
                    <td>
-                        <a href="inicio.html?id=${items[i].idProduct}">
+                   <button onclick="removeProduct(${items[i].reference})">Eliminar</button>
+                   <button onclick="updateProduct(${items[i].reference})">Actualizar</button>     
+                   <a href="inicio.html?id=${items[i].reference}">
                    </td> 
                 </tr>`;
     }
     tabla +=`</table>`;
 
-    $("#table_XXXXXX").html(tabla);
+    $("#table_Chocolate").html(tabla);
 }
 
 /**
@@ -112,7 +114,6 @@ function checkProductById(id){
  * @returns {undefined}
  */
 function showUniqueProduct(item) {
-    $("#id_product").val(item.idProduct);
     $("#reference").val(item.reference);
     $("#category").val(item.category);
     $("#description").val(item.description);
@@ -127,7 +128,6 @@ function showUniqueProduct(item) {
 function updateProduct(){
 
     let product = {
-        idProduct: $("#xxxxxxxxxxxxx").val(),
         reference: $("#reference").val(),
         category: $("#category").val(),
         description: $("#description").val(),
@@ -168,7 +168,7 @@ function removeProduct(id){
             headers: {
                 "Content-Type": "application/json"
             },
-            data: JSON.stringify({idProduct:id}),
+            data: JSON.stringify({reference:id}),
             statusCode:{
                 204:function(){
                     alert('Se ha eliminado el producto');

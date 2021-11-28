@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Productos</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link rel="stylesheet" href="../css/product.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/url.js"></script>
+    <script type="text/javascript" src="../js/product.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="userForm" class="form " action="" method="post">
+                        <h3 class="text-center text-white">Registrar Producto</h3>
+                        <div class="form-group">
+                            <label for="reference" class="text-white ">Referencia</label><br />
+                            <input type="text" name="reference" id="reference" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="categroy" class="text-white">Categoría</label><br />
+                            <input type="text" name="category" id="category" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="text-white">Descripción</label><br>
+                            <input type="text" name="description" id="description" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="availability" class="text-white">Disponibilidad</label><br>
+                            <select name="availability" id="availability" class="form-control" required>
+                                <option selected value="">Selecciona disponibilidad</option>
+                                <option value="disponible">Disponible</option>
+                                <option value="noDisponible">No disponible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price" class="text-white">Precio</label><br>
+                            <input type="number" name="price" id="price" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity" class="text-white">Cantidad</label><br>
+                            <input type="number" name="quantity" id="quantity" class="form-control" required>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" name="guardarDatos" class="btn btn-dark btn-md" value="Guardar" onclick="saveProduct()" />
+            <input class="btn btn-dark btn-md" value="Cancelar" onclick="cleanFieldsProduct()" />
+        </div>
+
+        </form>
+
+        <button onclick="checkProduct()"> Consultar Productos</button>
+        <div id="table_Chocolate"></div>
+
+    </div>
+</body>
+
+</html>
