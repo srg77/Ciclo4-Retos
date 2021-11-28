@@ -27,7 +27,7 @@ function saveProduct(){
             data: JSON.stringify(product),
             statusCode:{
                 201:function(){
-                    alert('Se ha registrado el producto');
+                    alert('PRODUCTO EDITADO');
                     checkProduct();
                 }
             },
@@ -149,7 +149,7 @@ function updateProduct(){
             data: JSON.stringify(product),
             statusCode:{
                 201:function(){
-                    alert('Se han actualizado los datos del producto');
+                    alert('PRODUCTO EDITADO');
                     window.location.assign('inicio.html');
                 }
             }
