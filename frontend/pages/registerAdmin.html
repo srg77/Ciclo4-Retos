@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="../css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/register.css">
+  <title>ADMIN</title>
+</head>
+
+<body class="back-register">
+
+  <div class="container h-100 w-50 d-flex justify-content-evenly align-items-center">
+
+    <div class="container border back-color">
+      <div class="row p-5">
+        <h1 class="mb-4 text-center">Bienvenido Administrador</h1>
+        <hr width="500">
+        <!-- <h4>Registrar un Usuario</h4> -->
+        <form novalidate>
+            <h3>Creacion de Usuario</h3>
+
+        <div class="mb-sm-3 ">
+              <label for="user_identification" class="form-label">Id</label>
+              <input type="text" id="idprueba" class="form-control">
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_identification" class="form-label">Identificacion</label>
+            <input type="text" id="user_identification" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="user_namec" class="form-label">Nombre</label>
+            <input type="text" id="user_namec" class="form-control">
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_adress" class="form-label">Direccion</label>
+            <input type="text" id="user_adress" class="form-control">
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_cellphone" class="form-label">Celular</label>
+            <input type="number" id="user_cellphone" class="form-control">
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_email" class="form-label">Email</label>
+            <input type="email" id="user_email" class="form-control" >
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_password" class="form-label">Contraseña</label>
+            <input type="password" id="user_password" class="form-control">
+        </div>
+
+
+        <div class="mb-sm-3 ">
+            <label for="user_zone" class="form-label">Zona</label>
+            <select class="form-control" id="user_zone">
+                <option>ZONA 1</option>
+                <option>ZONA 2</option>
+              </select>
+        </div>
+
+        <div class="mb-sm-3 ">
+            <label for="user_type" class="form-label">Tipo</label>
+            <select class="form-control" id="user_type">
+                <option>COOR</option>
+                <option>ASESOR</option>
+              </select>
+        </div>
+
+        <div class="mb-3 ">
+            <button class="btn btn-primary text-center" type="button" onclick="saveUser()">
+            Agregar/ Editar Usuario
+            </button>
+        </div>
+
+        <hr width="500">
+        <div class="mb-3 ">
+            <button class="btn btn-primary text-center" type="button" onclick="allUsers()">
+              Listar Usuarios
+            </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-3">
+    <div id="table_UserAdmin"></div>
+  </div>
+
+
+  <script src="../js/url.js"></script>
+  <script type="text/javascript" src="../js/UserAdmin.js"></script>
+</body>
+
+</html>

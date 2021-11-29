@@ -3147,8 +3147,8 @@ textarea.form-control-lg {
 
 .btn-info {
   color: #fff;
-  background-color: #0dcaf0;
-  border-color: #0dcaf0;
+  background-color: #a8560a;
+  border-color: #a8560a;
 }
 .btn-info:hover {
   color: #fff;
@@ -3515,7 +3515,7 @@ textarea.form-control-lg {
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 2.0rem;
   border-radius: 0.2rem;
 }
 
