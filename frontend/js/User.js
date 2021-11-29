@@ -2,6 +2,7 @@
 //     // checkUser() //Consulta de usuarios
 // })
 
+
 function registerUser(){
     let user = {
         

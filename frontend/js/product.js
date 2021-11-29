@@ -1,7 +1,10 @@
 // $(document).ready(function() {
 //     checkProduct() //Consulta de productos
 // })
-
+$(function(){
+    $("#nav-placeholder").load("nav.html");
+  });
+  
 function saveProduct(){
     console.log("Ejecutando funcion para guardar");
 

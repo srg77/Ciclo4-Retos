@@ -1,3 +1,7 @@
+$(function(){
+    $("#nav-placeholder").load("nav.html");
+});
+
 function iniciarSesion() {
     if ($("#emailuser").val().length == 0 ||$("#passworduser").val().length == 0) {
         alert("Todos los campos son obligatorios");
