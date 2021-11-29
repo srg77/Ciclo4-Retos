@@ -1,6 +1,6 @@
-$(document).ready(function() {
-checkProduct() //Consulta de usuarios
-})
+// $(document).ready(function() {
+//     checkProduct() //Consulta de productos
+// })
 
 function saveProduct(){
     console.log("Ejecutando funcion para guardar");
