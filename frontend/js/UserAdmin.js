@@ -62,15 +62,15 @@ function showUsers(items){
     var tabla = `<table class="table table-dark table-striped" border="1">
                     <thead >
                         <tr>
-                            <th>Identificacion</th>
-                            <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Celular</th>
-                            <th>Email</th>
-                            <th>Contraseña</th>
-                            <th>Zona</th>
-                            <th>Tipo</th>
-                            <th>Opciones</th>
+                            <th class="text-center">Identificacion</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Direccion</th>
+                            <th class="text-center">Celular</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Contraseña</th>
+                            <th class="text-center">Zona</th>
+                            <th class="text-center">Tipo</th>
+                            <th class="text-center">Opciones</th>
                         </tr>
                     </thead>`;
                 
@@ -78,17 +78,17 @@ function showUsers(items){
     
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-                    <td>${items[i].identification}</td>
-                    <td>${items[i].name}</td>
-                    <td>${items[i].address}</td>
-                    <td>${items[i].cellPhone}</td>
-                    <td>${items[i].email}</td>
-                    <td>${items[i].password}</td>
-                    <td>${items[i].zone}</td>
-                    <td>${items[i].type}</td>
-                    <td>
-                        <button onclick="fillInformation(${items[i].id})" >Actualizar</button>`
-                        tabla+=`<button onclick="removeUser(${items[i].id})">Eliminar</button>
+                    <td class="text-center">${items[i].identification}</td>
+                    <td class="text-center">${items[i].name}</td>
+                    <td class="text-center">${items[i].address}</td>
+                    <td class="text-center">${items[i].cellPhone}</td>
+                    <td class="text-center">${items[i].email}</td>
+                    <td class="text-center">${items[i].password}</td>
+                    <td class="text-center">${items[i].zone}</td>
+                    <td class="text-center">${items[i].type}</td>
+                    <td class="text-center">
+                        <button class="btn btn-primary text-center me-2" onclick="fillInformation(${items[i].id})" >Actualizar</button>`
+                        tabla+=`<button class="btn btn-primary text-center" onclick="removeUser(${items[i].id})">Eliminar</button>
                     </td> 
                 </tr>`;
     }
