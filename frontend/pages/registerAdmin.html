@@ -6,24 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <!-- Core theme CSS (includes Bootstrap)-->
   <link href="../css/styles.css" rel="stylesheet" />
+  <!-- Estilos personalizados para página registro-->
   <link rel="stylesheet" href="../css/register.css">
+  <!-- Estilos personalizados css para navigation menu -->
+  <link rel="stylesheet" href="../css/navbar.css" />
   <title>ADMIN</title>
 </head>
 
 <body class="back-register">
 
-  <div  id="nav-placeholder">
-   
-    <script>
-       $(function(){
-         $("#nav-placeholder").load("nav.html");
-         $("#inisesion").val("INICIAR SESIÓN");
-       });
-     </script>
- 
-   </div>
-  <div class="container mt-5 pt-5 h-100 w-56 d-flex justify-content-evenly align-items-center">
+  <header id="nav-placeholder">
+
+  </header>
+  <div class="container pt-5 h-100 w-56 d-flex justify-content-evenly align-items-center">
 
     <div class="container border back-color">
       <div class="row p-5">
@@ -109,15 +108,13 @@
       </div>
     </div>
 
-    
   </div>
 
-  <div class="container mt-5">
-    <div id="table_UserAdmin"></div>
-  </div>
-
+  <div  id="table_UserAdmin" class="container pb-4">
   
+  </div>
 
+ 
 
   <script src="../js/url.js"></script>
   <script type="text/javascript" src="../js/UserAdmin.js"></script>
