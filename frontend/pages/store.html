@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Productos</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    <link rel="stylesheet" href="../css/product.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+    <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+  <link href="../css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/product.css">
 </head>
 
-<body>
-    <div  id="nav-placeholder">
-     
-       </div>
-    <div class="container">
+<body class="back-register">
+    <header>
+        <div  id="nav-placeholder">
+        </div>
+    </header>
+     <br>
+    <div class="container" >
+        <br>
         <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
+            <div id="login-column" class="col-md-6 border back-color p-3" >
                 <div id="login-box" class="col-md-12">
                     <form id="userForm" class="form " action="" method="post">
-                        <h3 class="text-center text-white">Registrar Producto</h3>
+                        <h3 class="text-center text-black">Registrar Producto</h3>
                         <div class="form-group">
-                            <label for="reference" class="text-white ">Referencia</label><br />
+                            <label for="reference" class="form-label">Referencia</label><br />
                             <input type="text" name="reference" id="reference" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label for="categroy" class="text-white">Categoría</label><br />
+                            <label for="categroy" class="form-label">Categoría</label><br />
                             <input type="text" name="category" id="category" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="description" class="text-white">Descripción</label><br>
+                            <label for="description" class="text-black">Descripción</label><br>
                             <input type="text" name="description" id="description" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="availability" class="text-white">Disponibilidad</label><br>
+                            <label for="availability" class="text-black">Disponibilidad</label><br>
                             <select name="availability" id="availability" class="form-control" required>
                                 <option selected value="">Selecciona disponibilidad</option>
                                 <option value="disponible">Disponible</option>
@@ -45,29 +45,31 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="price" class="text-white">Precio</label><br>
+                            <label for="price" class="text-black">Precio</label><br>
                             <input type="number" name="price" id="price" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="quantity" class="text-white">Cantidad</label><br>
+                            <label for="quantity" class="text-black">Cantidad</label><br>
                             <input type="number" name="quantity" id="quantity" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="photography" class="text-white">Fotografía</label><br>
+                            <label for="photography" class="text-black">Fotografía</label><br>
                             <input type="url" name="photography" id="photography" class="form-control" required>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <input type="submit" name="guardarDatos" class="btn btn-primary text-center" value="Guardar" onclick="saveProduct()" />
+                            <input class="btn btn-dark btn-md" value="Cancelar" onclick="cleanFieldsProduct()" />
                         </div>
                 </div>
             </div>
         </div>
-        <div class="form-group text-center">
-            <input type="submit" name="guardarDatos" class="btn btn-dark btn-md" value="Guardar" onclick="saveProduct()" />
-            <input class="btn btn-dark btn-md" value="Cancelar" onclick="cleanFieldsProduct()" />
-        </div>
+        <button  class="btn btn-dark btn-md" onclick="checkProduct()"> Consultar Productos</button>
+        <div id="table_Chocolate"></div>
 
         </form>
 
-        <button  class="btn btn-dark btn-md" onclick="checkProduct()"> Consultar Productos</button>
-        <div id="table_Chocolate"></div>
+        
 
     </div>
 
