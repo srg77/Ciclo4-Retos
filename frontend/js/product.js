@@ -60,7 +60,7 @@ function checkProduct(){
         for (var i=0; i < respuesta.length; i++) {
 
         let nombreId = "botonDet"+i
-        let identificador = "#"+nombreId
+        let identificador ="#"+nombreId;
 
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
@@ -75,9 +75,9 @@ function checkProduct(){
         $("#res").append("<td>" + respuesta[i].photography + "</td>");
         $('#res').append("<td> <a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a> </td>");
         //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
-        $('#res').append("<a class=\"btn btn-primary text-center\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        //console.log(resobjetopuesta);                  
-        //$(identificador).click(() => llenarCampos(objeto));
+        $('#res').append("<a id='"+nombreId+"' class=\"btn btn-primary text-center\" )>Actualizar</a>");
+        console.log(objeto);                  
+        $(identificador).click(() => llenarCampos(objeto));
         $("#res").append("</tr>");
 
         
@@ -94,11 +94,19 @@ function showProducts(items){
 }
 
 function llenarCampos(items){
-    alert("ingreso a mostrar");
+    //alert("ingreso a mostrar");
     console.log(items);
     $("#reference").val(items.reference);
+    $("#reference").attr("readonly","readonly");
     $('#category').val(items.category);
-
+    $('#description').val(items.description);
+    $('#category').val(items.category);
+    $('availability').val(items.availability);
+    $('#price').val(items.price);
+    $('#quantity').val(items.quantity);
+    $('#photography').val(items.photography);
+    $('#botonGuardar').val('Guardar Cambios');
+    $('#titulo').text('Editar Producto');
 }
 
 /**
