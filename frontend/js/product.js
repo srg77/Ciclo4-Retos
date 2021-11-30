@@ -60,14 +60,9 @@ function checkProduct(){
         for (var i=0; i < respuesta.length; i++) {
 
         let nombreId = "botonDet"+i
-<<<<<<< HEAD
-        let identificador ="#"+nombreId;
-
-=======
         let nombreIdButtons = "buttons"+i
         let identificador = "#"+nombreId
         let idButtonGroup = "#"+nombreIdButtons
->>>>>>> 7bf32b50d8b31e384fc1b44c8e4e432b3871f808
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
 
@@ -80,19 +75,16 @@ function checkProduct(){
         $("#res").append("<td class='text-wrap'>" + respuesta[i].quantity + "</td>");
         $("#res").append("<td class='text-wrap'>" + respuesta[i].photography + "</td>");
         $("#res").append("<td id='"+nombreIdButtons+"' class='text-center'>");
-        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        $(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
         $("#res").append("</td>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
+        
         //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
-<<<<<<< HEAD
         $('#res').append("<a id='"+nombreId+"' class=\"btn btn-primary text-center\" )>Actualizar</a>");
         console.log(objeto);                  
         $(identificador).click(() => llenarCampos(objeto));
-=======
-        
-        //console.log(resobjetopuesta);                  
-        //$(identificador).click(() => llenarCampos(objeto));
->>>>>>> 7bf32b50d8b31e384fc1b44c8e4e432b3871f808
         $("#res").append("</tr>");
 
         

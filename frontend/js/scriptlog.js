@@ -37,11 +37,7 @@ function iniciarSesion() {
 
 function relocate(respuesta){
 
-<<<<<<< HEAD
     if (respuesta.id != null && respuesta.type=="ADMIN"){
-=======
-    if (respuesta.id != null){
->>>>>>> 7bf32b50d8b31e384fc1b44c8e4e432b3871f808
         window.location = "../pages/dashboard.html";
     }else{
         alert("credenciales incorrectas");
