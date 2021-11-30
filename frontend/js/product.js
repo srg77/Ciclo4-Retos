@@ -1,10 +1,10 @@
-// $(document).ready(function() {
-//     checkProduct() //Consulta de productos
-// })
+
 $(function(){
     $("#nav-placeholder").load("nav.html");
   });
-  
+function validateProduct(userAd){
+    return true;
+}
 function saveProduct(){
     console.log("Ejecutando funcion para guardar");
 
@@ -20,21 +20,28 @@ function saveProduct(){
 
     console.log(product);
     if (validateProduct(product)){
-        $.ajax({
-            url: url + "/api/chocolate/new",
-            type: 'POST',
-            dataType: 'json',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            data: JSON.stringify(product),
-            statusCode:{
-                201:function(){
-                    alert('PRODUCTO EDITADO');
-                    checkProduct();
-                }
-            },
-        });    
+       
+        $.ajax (
+            {
+                url          : 'http://129.151.121.220:8081/api/chocolate/new',
+                type         : 'POST',
+                contentType  : "application/json;charset-UTF-8",
+                dataType     : 'JSON',
+                data         :  JSON.stringify(product),
+    
+                success      :  function(response){
+                                   console.log(response);
+                                   alert("Producto almacenado");
+                                //    consultar();
+                                },
+                error       :   function(xhr,status){
+                                console.log(status);
+                                alert("Fallo al registrar el producto");
+                                }
+                            
+            }
+        );
+
     }
     
 }
@@ -69,9 +76,12 @@ function showProducts(items){
                     <th>Fotografía</th>
                     
                   </tr>`;
-                  
-    
     for (var i=0; i < items.length; i++) {
+
+        let nombreId = "botonDet"+i
+        let identificador = "#"+nombreId
+
+        let item = items[i].reference;
         tabla +=`<tr>
                    <td>${items[i].reference}</td>
                    <td>${items[i].category}</td>
@@ -80,16 +90,26 @@ function showProducts(items){
                    <td>${items[i].price}</td>
                    <td>${items[i].quantity}</td>
                    <td>${items[i].photography}</td>
-                   <td>
-                   <button onclick="removeProduct(${items[i].reference})">Eliminar</button>
-                   <button onclick="updateProduct(${items[i].reference})">Actualizar</button>     
-                   <a href="inicio.html?id=${items[i].reference}">
-                   </td> 
+                   <td id="tabla">`;
+                   $('#tabla').append("<button class=\"btn btn-primary text-center\" onclick=\"removeProduct("+item+")\">Eliminar</button>");
+                   $('#tabla').append("<button class=\"btn btn-primary text-center\" id=\""+identificador+"\">Actualizar</button>");                  
+                   $(identificador).click(() => llenarCampos(items[i]));
+
+        tabla += `</td> 
                 </tr>`;
     }
     tabla +=`</table>`;
 
+
     $("#table_Chocolate").html(tabla);
+}
+
+function llenarCampos(items){
+    alert("ingreso a mostrar");
+    console.log(items);
+    $("#reference").val(items.reference);
+    $('#category').val(items.category);
+
 }
 
 /**
@@ -99,7 +119,7 @@ function showProducts(items){
  */
 function checkProductById(id){
     $.ajax({
-        url: url+ "/api/chocolate/all"+id,
+        url: url+ "/api/chocolate/"+id,
         type: 'GET',
         dataType: 'json',
         success: function(product){
@@ -164,21 +184,22 @@ function updateProduct(){
 function removeProduct(id){
     let opc = confirm('¿Está seguro que desea eliminar este producto?')
     if(opc){
-        $.ajax({
-            url: url+"/api/chocolate/"+id,
-            type: 'DELETE',
-            dataType: 'json',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            data: JSON.stringify({reference:id}),
-            statusCode:{
-                204:function(){
-                    alert('Se ha eliminado el producto');
-                    checkProduct()
-                }
-            },
-        });
+        $.ajax (
+            {
+                url          : url+ '/api/chocolate/'+id,
+                type         : 'DELETE',
+                contentType  : 'application/json',
+                success      :  function(response){
+                                    console.log("Delete exitoso");
+                                    
+            
+                                },
+                error       :   function(xhr,status){
+                                    console.log(xhr);
+            
+                                }
+            }
+            );
     }
 
 }

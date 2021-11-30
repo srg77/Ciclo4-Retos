@@ -40,8 +40,8 @@
                             <label for="availability" class="text-black">Disponibilidad</label><br>
                             <select name="availability" id="availability" class="form-control" required>
                                 <option selected value="">Selecciona disponibilidad</option>
-                                <option value="disponible">Disponible</option>
-                                <option value="noDisponible">No disponible</option>
+                                <option value="true">Disponible</option>
+                                <option value="false">No disponible</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <input type="submit" name="guardarDatos" class="btn btn-primary text-center" value="Guardar" onclick="saveProduct()" />
+                            <input name="guardarDatos" class="btn btn-primary text-center" value="Guardar" onclick="saveProduct()" />
                             <input class="btn btn-dark btn-md" value="Cancelar" onclick="cleanFieldsProduct()" />
                         </div>
                 </div>
