@@ -11420,12 +11420,42 @@ p {
   }
 }
 
+
+
+
+:root {
+  --main-bg-color:#bf4290;
+  --header-bg-color:#eac715;
+  --button-bg-color:#604292;
+  --alter-bg-color:#2c4898;
+  --thumbnail-color:#e9ecef78;
+  
+}
+
+.back-color{
+    background-color: var(--thumbnail-color);
+}
+.back-register{
+
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+
 header.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  /* fallback for old browsers */
+  background: var(--main-bg-color);  
+  /* Chrome 10-25, Safari 5.1-6 */	
+  background: -webkit-linear-gradient(to right, #c291afa1, #be6d9f93, #bf428f8c),url(../assets/img/login/header-bg.jpg);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right,#c291afa1, #be6d9f93, #bf428f8c),url(../assets/img/header-bg.jpg); 
+  /* background-image: url("../assets/img/header-bg.jpg"); */
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
