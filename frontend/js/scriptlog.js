@@ -38,7 +38,7 @@ function iniciarSesion() {
 function relocate(respuesta){
 
     if (respuesta.id != null){
-        window.location = "bienvenida.html";
+        window.location = "../pages/dashboard.html";
     }else{
         alert("credenciales incorrectas");
     }
