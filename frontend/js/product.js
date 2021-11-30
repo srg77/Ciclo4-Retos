@@ -60,22 +60,26 @@ function checkProduct(){
         for (var i=0; i < respuesta.length; i++) {
 
         let nombreId = "botonDet"+i
+        let nombreIdButtons = "buttons"+i
         let identificador = "#"+nombreId
-
+        let idButtonGroup = "#"+nombreIdButtons
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
 
         $("#res").append("<tr>");
-        $("#res").append("<td>" + respuesta[i].reference + "</td>");
-        $("#res").append("<td>" + respuesta[i].category + "</td>");
-        $("#res").append("<td>" + respuesta[i].description + "</td>");
-        $("#res").append("<td>" + respuesta[i].availability + "</td>");
-        $("#res").append("<td>" + respuesta[i].price + "</td>");
-        $("#res").append("<td>" + respuesta[i].quantity + "</td>");
-        $("#res").append("<td>" + respuesta[i].photography + "</td>");
-        $('#res').append("<td> <a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a> </td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].reference + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].category + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].description + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].availability + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].price + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].quantity + "</td>");
+        $("#res").append("<td class='text-wrap'>" + respuesta[i].photography + "</td>");
+        $("#res").append("<td id='"+nombreIdButtons+"' class='text-center'>");
+        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        $(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
+        $("#res").append("</td>");
         //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
-        $('#res').append("<a class=\"btn btn-primary text-center\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        
         //console.log(resobjetopuesta);                  
         //$(identificador).click(() => llenarCampos(objeto));
         $("#res").append("</tr>");

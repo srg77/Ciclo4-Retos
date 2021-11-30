@@ -1,4 +1,10 @@
-var listaItems;//variable global que almacena la lista de usuarios
+//variable global que almacena la lista de usuarios
+var listaItems;
+//Función para cargar header en la página
+$(function(){
+    $("#nav-placeholder").load("nav.html");
+});
+
 function saveUser(){
     console.log("Ejecutando funcion para guardar");
     

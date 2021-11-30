@@ -64,20 +64,9 @@
 .badEmail {
   color: red;
 }
-#inisesion,
-#etiquetas {
-  color: #604292;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: x-large;
-  box-decoration-break: slice;
-  padding: 30px 50px 30px;
-}
+
 #navvar {
   background-color: #eac715;
-}
-img {
-  padding: 10px 10px 10px;
-  width: 150px;
 }
 
 .btn-primary {

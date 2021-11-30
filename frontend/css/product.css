@@ -6,13 +6,6 @@
   --thumbnail-color: #e9ecef78;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: rgb(37, 30, 30);
-  background-size: cover;
-  height: 100vh;
-}
 #login .container #login-row #login-column #login-box {
   margin-top: 30px;
   max-width: 600px;
@@ -42,11 +35,11 @@ body {
   background: linear-gradient(to right, #c291afa1, #be6d9f93, #bf428f8c),
     url(../assets/img/header-bg.jpg);
   /* background-image: url("../assets/img/header-bg.jpg"); */
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
-  min-height: 800px;
+  
 }
 .back-color {
   background-color: var(--thumbnail-color);
