@@ -120,27 +120,129 @@ function fillInformation(id){
     $("#user_zone").val(infoItem.zone);
     $("#user_type").val(infoItem.type);
 
-    
+    $("#btn-cambios").remove();
     $("#btn-group").append("<button id=\"btn-cambios\" class=\"btn btn-primary text-center\" type=\"button\">Guardar Cambios</button>");
     
+    console.log($("#user_zone").val());
 
-    let userAd = {
-        id: $("#idprueba").val(),
-        identification: $("#user_identification").val(),
-        name: $("#user_namec").val(),
-        address: $("#user_adress").val(),
-        cellPhone: $("#user_cellphone").val(),
-        email: $("#user_email").val(),
-        password: $("#user_password").val(),
-        zone: $("#user_zone").val(),
-        type: $("#user_type").val()
-    };
-    console.log(userAd)
+    let idInput = $("#idprueba").val();
+    let identificationInput= $("#user_identification").val();
+    let nameInput = $("#user_namec").val();
+    let addressInput = $("#user_adress").val();
+    let cellPhoneInput = $("#user_cellphone").val();
+    let emailInput = $("#user_email").val();
+    let passwordInput = $("#user_password").val();
+    let zoneInput = $("#user_zone").val();
+    let typeInput = $("#user_type").val();
+
+    let userAd;
+
+    console.log(checkSelect());
+
+    $("input").change(
+
+        
+        function(){
+
+            
+
+            $( this ).val();
+            console.log($( this ).val());
+
+            idInput = $("#idprueba").val();
+            identificationInput = $("#user_identification").val();
+            nameInput = $("#user_namec").val();
+            addressInput = $("#user_adress").val();
+            cellPhoneInput = $("#user_cellphone").val();
+            emailInput = $("#user_email").val();
+            passwordInput = $("#user_password").val();
+            zoneInput = $("#user_zone").val();
+            typeInput = $("#user_type").val();
+
+            
+            userAd = {
+
+                id: idInput,
+                identification: identificationInput,
+                name: nameInput,
+                address: addressInput,
+                cellPhone: cellPhoneInput,
+                email: emailInput,
+                password: passwordInput,
+                zone: zoneInput,
+                type: typeInput
+            };
+        }
+    );
+
+    // $("#user_zone").change(function(){
+        
+    //     let userAd = {
+
+    //         id: $("#idprueba").val(),
+    //         identification: $("#user_identification").val(),
+    //         name: $("#user_namec").val(),
+    //         address: $("#user_adress").val(),
+    //         cellPhone: $("#user_cellphone").val(),
+    //         email: $("#user_email").val(),
+    //         password: $("#user_password").val(),
+    //         zone: $("#user_zone").val(),
+    //         type: $("#user_type").val()
+    //     };
+    //     console.log(userAd);
+
+    //     setInterval(1000);
+    //     $("#btn-cambios").click(()=> updateUser(userAd));
+    // });
+    
+
+    // let userAd = {
+
+    //     id: idInput,
+    //     identification: identificationInput,
+    //     name: nameInput,
+    //     address: addressInput,
+    //     cellPhone: cellPhoneInput,
+    //     email: emailInput,
+    //     password: passwordInput,
+    //     zone: zoneInput,
+    //     type: typeInput
+    // };
+    // console.log(userAd);
+    
     $("#btn-cambios").click(()=> updateUser(userAd));
+    
+}
+function checkSelect(){
+    let valor;
+    $("select").change(
+
+
+        function(){
+            console.log($( this ).val());
+            if ($( this ).val() === undefined) {
+                valor = "nada";
+                
+            } else {
+                valor = $( this ).val();
+            }
+            
+    
+            // zoneInput = $("#user_zone").val();
+            // typeInput = $("#user_type").val();
+            // console.log(zoneInput);
+            // console.log(typeInput);
+
+            
+        }
+    );
+    console.log("dentro del check "+valor );
+    return valor
 }
 
 function updateUser(userUpdate){
 
+    
     console.log(userUpdate);
     if (validateUser(userUpdate)){
         $.ajax({
