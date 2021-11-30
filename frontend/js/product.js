@@ -55,7 +55,33 @@ function checkProduct(){
         type: 'GET',
         dataType: 'json',
         success: function(respuesta){
-            showProducts(respuesta);
+            //showProducts(respuesta);
+            $("#res").empty();
+        for (var i=0; i < respuesta.length; i++) {
+
+        let nombreId = "botonDet"+i
+        let identificador = "#"+nombreId
+
+        let item = respuesta[i].reference;
+        let objeto = respuesta[i];
+
+        $("#res").append("<tr>");
+        $("#res").append("<td>" + respuesta[i].reference + "</td>");
+        $("#res").append("<td>" + respuesta[i].category + "</td>");
+        $("#res").append("<td>" + respuesta[i].description + "</td>");
+        $("#res").append("<td>" + respuesta[i].availability + "</td>");
+        $("#res").append("<td>" + respuesta[i].price + "</td>");
+        $("#res").append("<td>" + respuesta[i].quantity + "</td>");
+        $("#res").append("<td>" + respuesta[i].photography + "</td>");
+        $('#res').append("<td> <a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a> </td>");
+        //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
+        $('#res').append("<a class=\"btn btn-primary text-center\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        //console.log(resobjetopuesta);                  
+        //$(identificador).click(() => llenarCampos(objeto));
+        $("#res").append("</tr>");
+
+        
+    }
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
@@ -64,44 +90,7 @@ function checkProduct(){
 }
 
 function showProducts(items){
-    var tabla = `<table border="1">
-                  <tr>
-                    
-                    <th>Referencia</th>
-                    <th>Categoria</th>
-                    <th>Descripcion</th>
-                    <th>Disponibilidad</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Fotografía</th>
-                    
-                  </tr>`;
-    for (var i=0; i < items.length; i++) {
-
-        let nombreId = "botonDet"+i
-        let identificador = "#"+nombreId
-
-        let item = items[i].reference;
-        tabla +=`<tr>
-                   <td>${items[i].reference}</td>
-                   <td>${items[i].category}</td>
-                   <td>${items[i].description}</td>
-                   <td>${items[i].availability}</td>
-                   <td>${items[i].price}</td>
-                   <td>${items[i].quantity}</td>
-                   <td>${items[i].photography}</td>
-                   <td id="tabla">`;
-                   $('#tabla').append("<button class=\"btn btn-primary text-center\" onclick=\"removeProduct("+item+")\">Eliminar</button>");
-                   $('#tabla').append("<button class=\"btn btn-primary text-center\" id=\""+identificador+"\">Actualizar</button>");                  
-                   $(identificador).click(() => llenarCampos(items[i]));
-
-        tabla += `</td> 
-                </tr>`;
-    }
-    tabla +=`</table>`;
-
-
-    $("#table_Chocolate").html(tabla);
+    
 }
 
 function llenarCampos(items){
