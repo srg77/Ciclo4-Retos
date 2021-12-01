@@ -22,7 +22,7 @@
 
     </header>
     <br>
-    <div class="container">
+    <div class="container pb-4">
         <br>
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6 border back-color p-4">
@@ -65,8 +65,7 @@
                         <div class="form-group mb-3 text-center">
                             <input type="button" name="guardarDatos" id="botonGuardar" class="btn btn-primary text-center" value="Guardar"
                                 onclick="saveProduct()" />
-                            <input type="button" class="btn btn-primary text-center" value="Cancelar"
-                                onclick="cleanFieldsProduct()" />
+                            
                             <hr>
                             <button type="button" class="btn btn-primary text-center" onclick="checkProduct()">Consultar
                                 Productos</button>
@@ -77,8 +76,11 @@
         </div>
 
         <div id="table_Chocolate"></div>
-        <table class="table table-dark table-striped" borde="1" >
-            <thead>
+       
+        <table class="table table-dark table-striped" borde="1" id="tablaid" style="display: none">
+            <br>
+            <br>
+            <thead >
                 <tr>
                     <th class="text-center">Categoria</th>
                     <th class="text-center">Referencia</th>
@@ -91,7 +93,7 @@
                 </tr>
             </thead>
 
-            <tbody id="res">
+            <tbody id="res" >
 
             </tbody>
         </table>  
@@ -103,5 +105,7 @@
     <script type="text/javascript" src="../js/url.js"></script>
     <script type="text/javascript" src="../js/product.js"></script>
 </body>
+
+
 
 </html>

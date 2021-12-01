@@ -2,8 +2,14 @@
 $(function(){
     $("#nav-placeholder").load("nav.html");
   });
-function validateProduct(userAd){
-    return true;
+function validateProduct(pro){
+
+    if(pro.reference ==="" || pro.category==="" || pro.description==="" || pro.description==="" ||
+    pro.availability==="" || pro.price==="" || pro.quantity==="" || pro.photography===""){
+        alert("Todos los campos son obligatorios");
+    }else{
+        return true;
+    }
 }
 function saveProduct(){
     console.log("Ejecutando funcion para guardar");
@@ -32,7 +38,7 @@ function saveProduct(){
                 success      :  function(response){
                                    console.log(response);
                                    alert("Producto almacenado");
-                                //    consultar();
+                                   checkProduct();
                                 },
                 error       :   function(xhr,status){
                                 console.log(status);
@@ -43,12 +49,26 @@ function saveProduct(){
         );
 
     }
+    $("#reference").val('');
+    $('#category').val('');
+    $('#description').val('');
+    $('#category').val('');
+    $('#availability').val('Seleccionar disponibilidad');
+    $('#price').val('');
+    $('#quantity').val('');
+    $('#photography').val('');
+    $("#reference").attr("readonly", false);
+    $('#botonGuardar').val('Guardar');
+    $('#titulo').text('Registrar Producto');
+   
+
     
 }
 
 
 
 function checkProduct(){
+    document.getElementById("tablaid").style.display="";
     $("#table_Chocolate").empty();
     $.ajax({
         url: url + '/api/chocolate/all',
@@ -68,7 +88,7 @@ function checkProduct(){
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
 
-        $("#res").append("<tr>");
+        $("#res").append("<tr class='border-bottom'>");
         $("#res").append("<td class='text-wrap'>" + respuesta[i].reference + "</td>");
         $("#res").append("<td class='text-wrap'>" + respuesta[i].category + "</td>");
         $("#res").append("<td class='text-wrap'>" + respuesta[i].description + "</td>");
@@ -83,7 +103,7 @@ function checkProduct(){
         $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Actualizar</a>");
         $(identificador).click(() => llenarCampos(objeto));
         
-        $(idButtonGroup).append("<a id=\'"+nombreIdd+"' class=\"btn btn-primary text-center\" onclick=borrar(" +item+")>Eliminar</a>");
+        $(idButtonGroup).append("<a id=\'"+nombreIdd+"' class=\"btn btn-primary text-center\">Eliminar</a>");
         $(identificar).click(() => borrar(item));
      
                    
@@ -113,14 +133,8 @@ function llenarCampos(items){
     $('#category').val(items.category);
 
     if(items.availability == true){
-        alert("ingreso con true");
-
-       //$('#seleccionador').val('Disponible');
        $('#availability').val($('#seleccionadorD').val());
-        //$('#seleccionador').text('disponible');
     }else{
-        alert("ingreso con false");
-        //$("#seleccionador").attr("value","false");
         $('#seleccionador').text('No disponible');
     }
    
@@ -195,6 +209,7 @@ function updateProduct(){
                 201:function(){
                     alert('PRODUCTO EDITADO');
                     window.location.assign('inicio.html');
+
                 }
             }
         });
@@ -212,7 +227,7 @@ function borrar(id){
                 contentType  : 'application/json',
                 success      :  function(response){
                                     console.log("Delete exitoso");
-                                    
+                                    checkProduct();
             
                                 },
                 error       :   function(xhr,status){

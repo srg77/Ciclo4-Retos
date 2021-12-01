@@ -44,7 +44,11 @@
 .back-color {
   background-color: var(--thumbnail-color);
 }
+#res{
+  background-color: #8f69ce;
+ 
 
+}
 .btn-primary {
   color: #ffffff;
   background-color: var(--button-bg-color);
