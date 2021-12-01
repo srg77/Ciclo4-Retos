@@ -24,19 +24,19 @@
   </header>
 
   <div class="modal-body modal-dialog w-75">
-    <div class="container">
+    <div class="container mt-4">
       <div class="modal-content col-lg-10 back-color p-4">
         <form class="text-center">
           <h2>Inicia Sesión</h2>
           <img src="../assets/img/login/icon-user.png" width="150px" height="150px" alt="">
           <div class="mb-4 mt-4">
             <label for="emailuser" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control" id="emailuser" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="emailuser" aria-describedby="emailHelp" required maxlength="50">
             <span id="badEmail" class="badEmail" style="display:none"></span>
           </div>
 
           <div class="mb-3">
-            <label for="passworduser" class="form-label">Contraseña</label>
+            <label for="passworduser" class="form-label"  required maxlength="50">Contraseña</label>
             <input type="password" class="form-control" id="passworduser">
           </div>
 

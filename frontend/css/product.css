@@ -5,6 +5,11 @@
   --alter-bg-color: #2c4898;
   --thumbnail-color: #e9ecef78;
 }
+td{
+  vertical-align: middle;
+  padding: 0.6em;
+}
+
 
 #login .container #login-row #login-column #login-box {
   margin-top: 30px;
@@ -44,7 +49,11 @@
 .back-color {
   background-color: var(--thumbnail-color);
 }
+#res{
+  background-color: #8f69ce;
+ 
 
+}
 .btn-primary {
   color: #ffffff;
   background-color: var(--button-bg-color);

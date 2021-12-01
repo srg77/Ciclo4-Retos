@@ -22,51 +22,61 @@
 
     </header>
     <br>
-    <div class="container">
+    <div class="container pb-4">
         <br>
         <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6 border back-color p-4">
+            <div id="login-column" class="col-md-8 border back-color p-4 mt-4">
                 <div id="login-box" class="col-md-12">
                     <form id="userForm" novalidate>
-                        <h3 class="text-center text-black mb-3">Registrar Producto</h3>
-                        <div class="form-group mb-3">
-                            <label for="reference" class="form-label">Referencia</label><br />
-                            <input type="text" name="reference" id="reference" class="form-control" required />
+                        <h3 id="titulo" class="text-center text-black mb-3">Registrar Producto</h3>
+
+                        <div class="row">
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="reference" class="form-label">Referencia</label><br />
+                                <input type="text" name="reference" id="reference" class="form-control" required />
+                            </div>
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="categroy" class="form-label">Categoría</label><br />
+                                <input type="text" name="category" id="category" class="form-control" required>
+                            </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="categroy" class="form-label">Categoría</label><br />
-                            <input type="text" name="category" id="category" class="form-control" required>
+                        <div class="row">
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="description" class="text-black">Descripción</label><br>
+                                <input type="text" name="description" id="description" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="availability" class="text-black">Disponibilidad</label><br>
+                                <select name="availability" id="availability" class="form-control" required>
+                                    <option selected value="" id="seleccionador">Selecciona disponibilidad</option>
+                                    <option value="true" id="seleccionadorD">Disponible</option>
+                                    <option value="false" id="seleccionadorND">No disponible</option>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="description" class="text-black">Descripción</label><br>
-                            <input type="text" name="description" id="description" class="form-control" required>
+                        <div class="row">
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="price" class="text-black">Precio</label><br>
+                                <input type="number" name="price" id="price" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="quantity" class="text-black">Cantidad</label><br>
+                                <input type="number" name="quantity" id="quantity" class="form-control" required>
+                            </div>
+
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="availability" class="text-black">Disponibilidad</label><br>
-                            <select name="availability" id="availability" class="form-control" required>
-                                <option selected value="">Selecciona disponibilidad</option>
-                                <option value="true">Disponible</option>
-                                <option value="false">No disponible</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="price" class="text-black">Precio</label><br>
-                            <input type="number" name="price" id="price" class="form-control" required>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="quantity" class="text-black">Cantidad</label><br>
-                            <input type="number" name="quantity" id="quantity" class="form-control" required>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="photography" class="text-black">Fotografía</label><br>
-                            <input type="url" name="photography" id="photography" class="form-control" required>
+                        <div class="row">
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="photography" class="text-black">Fotografía</label><br>
+                                <input type="url" name="photography" id="photography" class="form-control" required>
+                            </div>
                         </div>
 
                         <div class="form-group mb-3 text-center">
-                            <input type="button" name="guardarDatos" class="btn btn-primary text-center" value="Guardar"
-                                onclick="saveProduct()" />
-                            <input type="button" class="btn btn-primary text-center" value="Cancelar"
-                                onclick="cleanFieldsProduct()" />
+                            <input type="button" name="guardarDatos" id="botonGuardar"
+                                class="btn btn-primary text-center" value="Guardar" onclick="saveProduct()" />
+
                             <hr>
                             <button type="button" class="btn btn-primary text-center" onclick="checkProduct()">Consultar
                                 Productos</button>
@@ -76,25 +86,31 @@
             </div>
         </div>
 
-        <div id="table_Chocolate"></div>
-        <table class="table table-dark table-striped" border="1" >
-            <thead>
-                <tr>
-                    <th class="text-center">Categoria</th>
-                    <th class="text-center">Referencia</th>
-                    <th class="text-center">Descripcion</th>
-                    <th class="text-center">Disponibilidad</th>
-                    <th class="text-center">Precio</th>
-                    <th class="text-center">Cantidad</th>
-                    <th class="text-center">Fotografía</th>
-                    <th class="text-center">Opciones</th>
-                </tr>
-            </thead>
+        <!-- <div id="table_Chocolate"></div> -->
 
-            <tbody id="res">
+        <div class="table-responsive-lg">
+            <table class="table table-dark table-striped" border="1" id="tablaid" style="display: none">
+                <br>
+                <br>
+                <thead>
+                    <tr>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Referencia</th>
+                        <th class="text-center">Descripcion</th>
+                        <th class="text-center">Disponibilidad</th>
+                        <th class="text-center">Precio</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-center">Fotografía</th>
+                        <th class="text-center">Opciones</th>
+                    </tr>
+                </thead>
 
-            </tbody>
-        </table>  
+                <tbody id="res">
+
+                </tbody>
+            </table>
+        </div>
+
 
 
 
@@ -103,5 +119,7 @@
     <script type="text/javascript" src="../js/url.js"></script>
     <script type="text/javascript" src="../js/product.js"></script>
 </body>
+
+
 
 </html>

@@ -2,8 +2,14 @@
 $(function(){
     $("#nav-placeholder").load("nav.html");
   });
-function validateProduct(userAd){
-    return true;
+function validateProduct(pro){
+
+    if(pro.reference ==="" || pro.category==="" || pro.description==="" || pro.description==="" ||
+    pro.availability==="" || pro.price==="" || pro.quantity==="" || pro.photography===""){
+        alert("Todos los campos son obligatorios");
+    }else{
+        return true;
+    }
 }
 function saveProduct(){
     console.log("Ejecutando funcion para guardar");
@@ -32,7 +38,7 @@ function saveProduct(){
                 success      :  function(response){
                                    console.log(response);
                                    alert("Producto almacenado");
-                                //    consultar();
+                                   checkProduct();
                                 },
                 error       :   function(xhr,status){
                                 console.log(status);
@@ -43,13 +49,27 @@ function saveProduct(){
         );
 
     }
+    $("#reference").val('');
+    $('#category').val('');
+    $('#description').val('');
+    $('#category').val('');
+    $('#availability').val('Seleccionar disponibilidad');
+    $('#price').val('');
+    $('#quantity').val('');
+    $('#photography').val('');
+    $("#reference").attr("readonly", false);
+    $('#botonGuardar').val('Guardar');
+    $('#titulo').text('Registrar Producto');
+   
+
     
 }
 
 
 
 function checkProduct(){
-    $("#table_Chocolate").empty();
+    document.getElementById("tablaid").style.display="";
+    // $("#table_Chocolate").empty();
     $.ajax({
         url: url + '/api/chocolate/all',
         type: 'GET',
@@ -60,29 +80,34 @@ function checkProduct(){
         for (var i=0; i < respuesta.length; i++) {
 
         let nombreId = "botonDet"+i
+        let nombreIdd = "botonDel"+i
         let nombreIdButtons = "buttons"+i
         let identificador = "#"+nombreId
         let idButtonGroup = "#"+nombreIdButtons
+        let identificar ="#"+nombreIdd;
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
 
-        $("#res").append("<tr>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].reference + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].category + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].description + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].availability + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].price + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].quantity + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].photography + "</td>");
+        $("#res").append("<tr class='border-bottom'>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].reference + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].category + "</td>");
+        $("#res").append("<td class='text-center col-md-2'>" + respuesta[i].description + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].availability + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].price + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].quantity + "</td>");
+        $("#res").append("<td class='text-center col-md-1'>" + respuesta[i].photography + "</td>");
         $("#res").append("<td id='"+nombreIdButtons+"' class='text-center'>");
-        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        $(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
+        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
         $("#res").append("</td>");
-        //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
+        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Actualizar</a>");
+        $(identificador).click(() => llenarCampos(objeto));
         
-        //console.log(resobjetopuesta);                  
-        //$(identificador).click(() => llenarCampos(objeto));
-        $("#res").append("</tr>");
+        $(idButtonGroup).append("<a id=\'"+nombreIdd+"' class=\"btn btn-primary text-center\">Eliminar</a>");
+        $(identificar).click(() => borrar(item));
+    
+
+        $("#res").append("</td></tr>");
 
         
     }
@@ -98,11 +123,27 @@ function showProducts(items){
 }
 
 function llenarCampos(items){
-    alert("ingreso a mostrar");
+    alert("A continuación modifique los campos que desea actualizar");
     console.log(items);
     $("#reference").val(items.reference);
+    $("#reference").attr("readonly","readonly");
+    $('#category').val(items.category);
+    $('#description').val(items.description);
     $('#category').val(items.category);
 
+    if(items.availability == true){
+       $('#availability').val($('#seleccionadorD').val());
+    }else{
+        $('#seleccionador').text('No disponible');
+    }
+   
+
+
+    $('#price').val(items.price);
+    $('#quantity').val(items.quantity);
+    $('#photography').val(items.photography);
+    $('#botonGuardar').val('Guardar Cambios');
+    $('#titulo').text('Editar Producto');
 }
 
 /**
@@ -167,6 +208,7 @@ function updateProduct(){
                 201:function(){
                     alert('PRODUCTO EDITADO');
                     window.location.assign('inicio.html');
+
                 }
             }
         });
@@ -174,7 +216,7 @@ function updateProduct(){
         }
 }
 
-function removeProduct(id){
+function borrar(id){
     let opc = confirm('¿Está seguro que desea eliminar este producto?')
     if(opc){
         $.ajax (
@@ -184,7 +226,7 @@ function removeProduct(id){
                 contentType  : 'application/json',
                 success      :  function(response){
                                     console.log("Delete exitoso");
-                                    
+                                    checkProduct();
             
                                 },
                 error       :   function(xhr,status){
