@@ -69,7 +69,7 @@ function saveProduct(){
 
 function checkProduct(){
     document.getElementById("tablaid").style.display="";
-    $("#table_Chocolate").empty();
+    // $("#table_Chocolate").empty();
     $.ajax({
         url: url + '/api/chocolate/all',
         type: 'GET',
@@ -89,13 +89,13 @@ function checkProduct(){
         let objeto = respuesta[i];
 
         $("#res").append("<tr class='border-bottom'>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].reference + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].category + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].description + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].availability + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].price + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].quantity + "</td>");
-        $("#res").append("<td class='text-wrap'>" + respuesta[i].photography + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].reference + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].category + "</td>");
+        $("#res").append("<td class='text-center col-md-2'>" + respuesta[i].description + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].availability + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].price + "</td>");
+        $("#res").append("<td class='text-center'>" + respuesta[i].quantity + "</td>");
+        $("#res").append("<td class='text-center col-md-1'>" + respuesta[i].photography + "</td>");
         $("#res").append("<td id='"+nombreIdButtons+"' class='text-center'>");
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
@@ -105,8 +105,7 @@ function checkProduct(){
         
         $(idButtonGroup).append("<a id=\'"+nombreIdd+"' class=\"btn btn-primary text-center\">Eliminar</a>");
         $(identificar).click(() => borrar(item));
-     
-                   
+    
 
         $("#res").append("</td></tr>");
 

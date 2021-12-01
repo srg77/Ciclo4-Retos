@@ -5,6 +5,11 @@
   --alter-bg-color: #2c4898;
   --thumbnail-color: #e9ecef78;
 }
+td{
+  vertical-align: middle;
+  padding: 0.6em;
+}
+
 
 #login .container #login-row #login-column #login-box {
   margin-top: 30px;

@@ -16,19 +16,22 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/register.css">
+        <link rel="stylesheet" href="./css/navbar.css">
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="nav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">WillyWonka</a>
+                <!-- <a class="navbar-brand" href="#page-top">WillyWonka</a> -->
+                <a class="navbar-brand" href="#page-top"><img class="logo" src="./assets/img/logos/logo3.png"> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#team">Soporte</a></li>
+                        <li  class="nav-item"><a id="nav-item" class="nav-link" href="#team">Soporte</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +41,7 @@
             <div class="container">
                 <div class="masthead-subheading">Bienvenido a nuestra web</div>
                 <div class="masthead-heading text-uppercase">¿Ya tienes una cuenta?</div>
-                <a class="btn btn-info btn-sm" href="./pages/login.html" role="button">Iniciar sesion</a>
+                <a class="btn btn-primary text-center" href="./pages/login.html" role="button">Iniciar sesion</a>
                 <!-- <div class="masthead-heading text-uppercase">¿Eres nuevo por aquí?</div>
                 <a class="btn btn-info btn-sm" href="./pages/registerUser.html" role="button">Registrate</a> -->
             </div>
@@ -108,5 +111,7 @@
                 </div>
             </div>
         </section>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./js/inicio.js"></script>
     </body>
 </html>
