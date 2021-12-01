@@ -10,6 +10,13 @@ td{
   vertical-align: middle;
   padding: 0.6em;
 }
+#tbodyUsers{
+  
+  background-color: #8f69ce;
+  
+  
+
+}
 .table-striped > tbody > tr:nth-of-type(even) td > .btn-primary {
   background-color: #8f69ce;
 }

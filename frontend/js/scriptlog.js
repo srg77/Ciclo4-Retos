@@ -43,7 +43,7 @@ function relocate(respuesta){
         alert("BIENVENIDO "+ respuesta.type + "  "+ respuesta.name)
         window.location = "../pages/bienvenida.html";
     }else{
-        alert("credenciales incorrectas");
+        alert("usuario o contraseña incorrecto");
     }
 
 }

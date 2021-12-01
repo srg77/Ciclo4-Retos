@@ -29,7 +29,7 @@ function saveProduct(){
        
         $.ajax (
             {
-                url          : 'http://129.151.121.220:8081/api/chocolate/new',
+                url          : url+'/api/chocolate/new',
                 type         : 'POST',
                 contentType  : "application/json;charset-UTF-8",
                 dataType     : 'JSON',
