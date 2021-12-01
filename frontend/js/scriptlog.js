@@ -39,6 +39,9 @@ function relocate(respuesta){
 
     if (respuesta.id != null && respuesta.type=="ADMIN"){
         window.location = "../pages/dashboard.html";
+    }else if(respuesta.id != null){
+        alert("BIENVENIDO "+ respuesta.type + "  "+ respuesta.name)
+        window.location = "../pages/bienvenida.html";
     }else{
         alert("credenciales incorrectas");
     }

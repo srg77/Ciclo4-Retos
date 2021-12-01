@@ -60,9 +60,11 @@ function checkProduct(){
         for (var i=0; i < respuesta.length; i++) {
 
         let nombreId = "botonDet"+i
+        let nombreIdd = "botonDel"+i
         let nombreIdButtons = "buttons"+i
         let identificador = "#"+nombreId
         let idButtonGroup = "#"+nombreIdButtons
+        let identificar ="#"+nombreIdd;
         let item = respuesta[i].reference;
         let objeto = respuesta[i];
 
@@ -78,14 +80,15 @@ function checkProduct(){
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
         $("#res").append("</td>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
-        
-        //$("#res").append("<td> <a class=\"btn btn-outline-danger\" onclick=borrar(" +idClient+")>ELIMINAR</a> </td>");
-        $('#res').append("<a id='"+nombreId+"' class=\"btn btn-primary text-center\" )>Actualizar</a>");
-        console.log(objeto);                  
+        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Actualizar</a>");
         $(identificador).click(() => llenarCampos(objeto));
-        $("#res").append("</tr>");
+        
+        $(idButtonGroup).append("<a id=\'"+nombreIdd+"' class=\"btn btn-primary text-center\" onclick=borrar(" +item+")>Eliminar</a>");
+        $(identificar).click(() => borrar(item));
+     
+                   
+
+        $("#res").append("</td></tr>");
 
         
     }
@@ -101,14 +104,28 @@ function showProducts(items){
 }
 
 function llenarCampos(items){
-    //alert("ingreso a mostrar");
+    alert("A continuación modifique los campos que desea actualizar");
     console.log(items);
     $("#reference").val(items.reference);
     $("#reference").attr("readonly","readonly");
     $('#category').val(items.category);
     $('#description').val(items.description);
     $('#category').val(items.category);
-    $('availability').val(items.availability);
+
+    if(items.availability == true){
+        alert("ingreso con true");
+
+       //$('#seleccionador').val('Disponible');
+       $('#availability').val($('#seleccionadorD').val());
+        //$('#seleccionador').text('disponible');
+    }else{
+        alert("ingreso con false");
+        //$("#seleccionador").attr("value","false");
+        $('#seleccionador').text('No disponible');
+    }
+   
+
+
     $('#price').val(items.price);
     $('#quantity').val(items.quantity);
     $('#photography').val(items.photography);
@@ -185,7 +202,7 @@ function updateProduct(){
         }
 }
 
-function removeProduct(id){
+function borrar(id){
     let opc = confirm('¿Está seguro que desea eliminar este producto?')
     if(opc){
         $.ajax (
