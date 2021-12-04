@@ -1,6 +1,7 @@
 package com.example.reto2;
 
 import com.example.reto2.CrudRepository.ChocolateRepository;
+import com.example.reto2.CrudRepository.OrderRepository;
 import com.example.reto2.CrudRepository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class Reto2Application  implements CommandLineRunner{
     private ChocolateRepository interfaceChocolate;
     @Autowired
     private UserRepository interfaceUser;
+    @Autowired
+    private OrderRepository interfaceOrder;
+    
 	public static void main(String[] args) {
 		SpringApplication.run(Reto2Application.class, args);
 	}
@@ -23,6 +27,7 @@ public class Reto2Application  implements CommandLineRunner{
     public void run(String... args) throws Exception {
         interfaceChocolate.deleteAll();
         interfaceUser.deleteAll();
+        interfaceOrder.deleteAll();
     }
 
 }

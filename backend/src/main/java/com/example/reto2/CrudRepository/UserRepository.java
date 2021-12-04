@@ -1,5 +1,6 @@
 package com.example.reto2.CrudRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.example.reto2.Models.Documents.User;
@@ -16,5 +17,8 @@ public interface UserRepository extends MongoRepository<User, Integer>{
 	
 	@Query("{email:?0, password:?1}")
 	Optional<User> getEmailAndPassword(String email, String pass);
+	
+	
+	
 	
 }
