@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/advisorModule.css">
+    <!-- Estilos personalizados css para navigation menu -->
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body id="page-top" class="back-register">
+    <header id="nav-placeholder">
+
+    </header>
+    <div class="container mt-5 mb-4  d-flex justify-content-evenly align-items-center w-100">
+
+        <div class="container border back-color w-100">
+            <div class="row p-5 w-100">
+                <h1 class="mb-4 text-center">Bienvenido <span id="userName"></span> </h1>
+                <hr width="500">
+                <h3 class="text-center">Orden de Pedido</h3>
+                <div class="container pt-4 pb-4 w-100">
+                    <table class="table table-dark table-striped w-90" border="1" >
+                        <thead>
+                            <tr>
+                                <th class="text-center">Identificacion</th>
+                                <th class="text-center">Nombres</th>
+                                <th class="text-center">E-mail</th>
+                                <th class="text-center">Perfil</th>
+                                <th class="text-center">Zona</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody id="table-body-user">
+                            <tr>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    
+                </div>
+                <div class="container pt-4 pb-4 w-100">
+                    <table class="table table-dark table-striped w-90" border="1" id="tablaid">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Categoria</th>
+                                <th class="text-center">Referencia</th>
+                                <th class="text-center">Descripcion</th>
+                                <th class="text-center">Disponibilidad</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Fotografía</th>
+                                <th class="text-center">Cantidad</th>
+                                <th class="text-center">Opciones</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody id="table-body-orders">
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                            <td class="text-center">Sin info</td>
+                        </tbody>
+                    </table>
+
+                    <div class="row d-flex justify-content-end w-90 mx-auto" >
+                        <button class="w-18 btn btn-primary text-center ">Enviar Solicitud Pedido</button>
+                    </div>
+                </div>
+                
+
+                    
+
+                
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/url.js"></script>
+    <script src="../js/scriptlog.js"></script>
+    <script src="../js/orderGenerator.js"></script>
+
+</body>
+
+</html>

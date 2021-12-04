@@ -1,6 +1,9 @@
+var userNameGlobal='s';
 $(function(){
     $("#nav-placeholder").load("nav.html");
 });
+
+
 
 function iniciarSesion() {
     if ($("#emailuser").val().length == 0 ||$("#passworduser").val().length == 0) {
@@ -17,8 +20,9 @@ function iniciarSesion() {
                 dataType: "json",
                 success: function (respuesta) {
                     console.log(respuesta);
-                    relocate(respuesta)
-
+                    userNameGlobal = respuesta.name;
+                    relocate(respuesta);
+                    debugger;
                 },
                 error: function (xhr, status) {
                     alert("ha sucedido un problema");
@@ -35,15 +39,22 @@ function iniciarSesion() {
     }
 }
 
-function relocate(respuesta){
 
-    if (respuesta.id != null && respuesta.type=="ADMIN"){
+function relocate(respuesta){
+    
+    if (respuesta.id != null && respuesta.type=="ADM"){
         window.location = "../pages/dashboard.html";
-    }else if(respuesta.id != null){
-        alert("BIENVENIDO "+ respuesta.type + "  "+ respuesta.name)
-        window.location = "../pages/bienvenida.html";
-    }else{
+    }else if(respuesta.id != null && respuesta.type == "COORD"){
+        alert("BIENVENIDO "+ respuesta.type + "  "+ respuesta.name);
+        window.location.href = "../pages/coordinatorModule.html?"+respuesta.id;
+        
+    }else if (respuesta.id != null && respuesta.type == "ASE"){
+        alert(`BIENVENIDO ASESOR ${respuesta.name}`);
+        window.location.href = "../pages/advisorModule.html?"+respuesta.id;
+    }
+    else{
         alert("usuario o contraseña incorrecto");
     }
 
 }
+

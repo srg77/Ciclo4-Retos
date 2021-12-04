@@ -13,9 +13,24 @@
     background-attachment: scroll;
     background-position: center center;
     background-size: cover;
-    height: 100vh;
+    /* height: 100vh;
     font-style: italic;
-    font-size: xx-large;
+    font-size: xx-large; */
+}
+.w-18{
+    width: 18%;
+}
+body{
+    min-width: 100vh;
+}
+td{
+    vertical-align: middle;
+    padding: 0.6em;
+}
+#table-body-orders, #table-body-user{
+    
+    background-color: #8f69ce;
+    
 }
 .btn-primary {
     color: #ffffff;
