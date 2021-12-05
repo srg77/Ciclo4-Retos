@@ -19,7 +19,7 @@ public class OrderService {
 	
 	public Order save(Order order) {
 		Optional<Order> e = orderRepo.findById(order.getId());
-		if(e != null) {
+		if(e.isPresent()) {
 			Order actua = new Order();
 			actua.setId(e.get().getId());
 			actua.setProducts(e.get().getProducts());
