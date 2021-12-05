@@ -52,7 +52,7 @@ public class UserService {
         Optional<User> respuesta = userRepo.getEmailAndPassword(userEmail, userPassword);
 
         if (!respuesta.isPresent()) {
-            respuestaCredenciales = new User(null, null, null, null, null, null, null, null, null);
+            respuestaCredenciales = new User(null, null, null, null, null, null, null, null, null, null, null);
 
         } else {
             respuestaCredenciales = respuesta.get();
@@ -61,9 +61,7 @@ public class UserService {
         return respuestaCredenciales;
     }
 
-    public Optional<User> getUser(Integer userid) {
-        return userRepo.findById(userid);
-    }
+    
 
     // eliminar registro
     public boolean deleteUser(Integer userId) {
@@ -73,5 +71,14 @@ public class UserService {
         }).orElse(false);
         return aBoolean;
     }
+    
+    //validar por ID
+    public Optional<User> getUser(Integer userid) {
+        return userRepo.findById(userid);
+    }
 
+    //validar por zona
+    public List<User> getUserZone() {
+        return userRepo.findAll();
+    }
 }

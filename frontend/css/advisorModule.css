@@ -27,11 +27,12 @@ td{
     vertical-align: middle;
     padding: 0.6em;
 }
-#table-body-orders, #table-body-user{
+#table-body-orders, #table-body-user, #table-body-detail-order, #table-body-detail{
     
     background-color: #8f69ce;
     
 }
+
 .btn-primary {
     color: #ffffff;
     background-color: var(--button-bg-color);

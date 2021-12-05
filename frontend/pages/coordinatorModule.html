@@ -29,7 +29,7 @@
             <div class="row p-5 w-100">
                 <h1 class="mb-4 text-center">Bienvenido <span id="userName"></span> </h1>
                 <hr width="500">
-                <h3 class="text-center">Ordenes Asesores Comerciales</h3>
+                <h3 class="text-center">Perfil del coordinador</h3>
                 <div class="container pt-4 pb-4 w-100">
                     <table class="table table-dark table-striped w-90" border="1" >
                         <thead>
@@ -56,8 +56,9 @@
 
                     
                 </div>
+                <h3 class="text-center">Ordenes de los Asesores comerciales</h3>
                 <div class="container pt-4 pb-4 w-100">
-                    <table class="table table-dark table-striped w-90" border="1" id="tablaid">
+                    <table class="table table-dark table-striped w-90" border="1" id="tablaid" style="display:none">
                         <thead>
                             <tr>
                                 <th class="text-center">Identificacion</th>
@@ -82,17 +83,72 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
 
-                    <div class="row d-flex justify-content-end w-90 mx-auto" >
-                        <button class="w-18 btn btn-primary text-center ">Enviar Solicitud Pedido</button>
-                    </div>
+                <h3 id="title" style="display:none" class="text-center">Detalle y estado de la orden</h3>
+
+                <div class="container pt-4 pb-4 w-100">
+                    <table class="table table-dark table-striped w-90" border="1" id="tablaid2" style="display:none">
+                        <thead>
+                            <tr>
+                            
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">No. Pedido</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center">Cambiar Estado</th>
+                                <th class="text-center">Guardar</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody id="table-body-detail-order">
+                            <tr>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center"> Sin Info</td>
+                                <td class="text-center">Sin info</td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="container pt-4 pb-4 w-100">
+                    <table class="table table-dark table-striped w-90" border="1" id="tablaid22" style="display:none">
+                        <thead>
+                            <tr>
+                            
+                                <th class="text-center">Foto</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Categoria</th>
+                                <th class="text-center">Descripcion</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Cantidad</th>
+                                <th class="text-center">Stock</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody id="table-body-detail">
+                            <tr>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center"> Sin Info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center"> Sin Info</td>
+                                <td class="text-center">Sin info</td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
     </div>
 
-    
+    <script src="../js/url.js"></script>
     <script  src="../js/scriptlog.js"></script>
     <script src="../js/orderCheck.js"></script>
     

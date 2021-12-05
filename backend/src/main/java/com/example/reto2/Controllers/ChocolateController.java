@@ -1,6 +1,7 @@
 package com.example.reto2.Controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.reto2.Models.Documents.Chocolate;
 import com.example.reto2.Services.ChocolateService;
@@ -48,6 +49,12 @@ public class ChocolateController {
     public boolean delete(@PathVariable("id") String productId) {
         return productService.deleteProduct(productId);
     }
+    
+    @GetMapping("/{id}")
+    public Optional<Chocolate> getId(@PathVariable("id") String productId) {
+		return productService.getProduct(productId);
+	}
+
 
     
 }

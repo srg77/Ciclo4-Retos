@@ -1,6 +1,8 @@
 package com.example.reto2.Controllers;
 
 import java.util.List;
+import java.util.Optional;
+
 
 import com.example.reto2.Models.Documents.User;
 import com.example.reto2.Services.UserService;
@@ -88,6 +90,12 @@ public class UserController {
     public boolean delete(@PathVariable("id") Integer userId) {
         return service.deleteUser(userId);
     }
+    
+    @GetMapping("/{id}")
+    public Optional<User> getAdmin(@PathVariable("id") int userid) {
+        return service.getUser(userid);
+    }
+
 	
 
 }

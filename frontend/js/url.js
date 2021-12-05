@@ -3,4 +3,4 @@
 //backend samuel
 // var url ="http://152.70.141.56:8081"
 //backend local
-var url ="http://localhost:8081";
+var url ="http://localhost:8082";
