@@ -52,16 +52,6 @@ const fillTableInfoUser = (respuesta) => {
         $("#table-body-user").append("<td class='text-center'>"+respuesta.zone+"</td>");
         checkOrders(respuesta.zone);
 
-        // $("#table-body-users").append("<td id='"+nombreIdButtons+"' class='text-center'>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
-        // $("#tbodyUsers").append("</td>");
-        // $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Agregar</a>");
-        // $(identIdUpdate).click(() => fillInformation(objeto));
-        
-        // $(idButtonGroup).append("<a id='"+nombreIdDelete+"' class='btn btn-primary text-center'>Eliminar</a>");
-        // $(identIdDelete).click(() => removeUser(item));
-    
         $("#table-body-user").append("</tr>");
     
 }
@@ -127,11 +117,6 @@ function showDetailOrder(idOrder,getZone){
             console.log(respuesta);
             f = new Date(respuesta.registerDay);
             fechaPasar = f.getDate() + '/' + ( f.getMonth() + 1 ) + '/' + f.getFullYear();
-            /*<select name="availability" id="availability" class="form-control" required>
-                <option selected value="" id="seleccionador">Selecciona disponibilidad</option>
-                <option value="true" id="seleccionadorD">Disponible</option>
-                <option value="false" id="seleccionadorND">No disponible</option>
-            </select>*/
 
             $("#table-body-detail-order").append("<td class='text-center'>" + fechaPasar + "</td>");
             $("#table-body-detail-order").append("<td class='text-center'>" + respuesta.id + "</td>");
@@ -186,40 +171,24 @@ function update(idOrder, estado, respuesta, getZone){
     
 }
 
-function listProducts(obj){
+function listProducts(order){
     //tabla en la cual se pueden ver los productos de la orden actualizada
-    let iterar = obj.products;
-    let iterarCan = obj.quantities;
-
-    let refer = iterarCan.length;
-    var keys = Object.keys(iterarCan).length;
-    $("#table-body-detail").empty();
-    for (i in iterar){
+    let products = order.products;
     
-        refer = iterar[i].reference;
-        //console.log("REFERENCIAAAA: "+ refer);
-        console.log(iterar[i].photography);
-        console.log(iterar[i].reference);
-        console.log(iterar[i].category);
-        console.log(iterar[i].description);
-        console.log(iterar[i].price);
-        //for (x in iterarCan){
-            //console.log("LEYENDO-...."+ Object.keys(obj.quantities)[0]);
-            if(iterar[i].reference == refer){
-                console.log(obj.quantities[i]);
-            }
-        //}
-        console.log(iterar[i].quantity);  //stock
+    $("#table-body-detail").empty();
+
+    //itera la lista de productos y llena la tabla con la info correspondiente
+    for (i in products){
+    
         $("#table-body-detail").append("<tr class='border-bottom'>");
-        $("#table-body-detail").append("<td class='text-center col-md-1'>" + iterar[i].photography + "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + iterar[i].reference + "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + iterar[i].category + "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + iterar[i].description + "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + iterar[i].price+ "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + obj.quantities[i]+ "</td>");
-        $("#table-body-detail").append("<td class='text-center'>" + iterar[i].quantity + "</td></tr>");
-        
-console.log("recorri "+i);
+        $("#table-body-detail").append("<td class='text-center col-md-1'>" + products[i].photography + "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + products[i].reference + "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + products[i].category + "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + products[i].description + "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + products[i].price+ "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + order.quantities[i]+ "</td>");
+        $("#table-body-detail").append("<td class='text-center'>" + products[i].quantity + "</td></tr>");
+
     }
     
 
