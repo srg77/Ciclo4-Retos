@@ -19,6 +19,7 @@ public class OrderService {
 	
 	public Order save(Order order) {
 		Optional<Order> e = orderRepo.findById(order.getId());
+		//Actualiza si ya existe el producto 
 		if(e.isPresent()) {
 			Order actua = new Order();
 			actua.setId(e.get().getId());
@@ -30,14 +31,15 @@ public class OrderService {
 			return orderRepo.save(actua);
 		}
 		else {
+			//Guarda un producto nuevo
 			if (order.getId() != null) {
 				return orderRepo.save(order);
 			}
 			return order;
 		}
-        //Guarda un producto nuevo
+        
 		
-        //Actualiza si ya existe el producto 
+        
 	}
 	
 	 // listar todos los Orders
@@ -45,13 +47,13 @@ public class OrderService {
         return orderRepo.findAll();
     }
     
-  //validar por ID
+  	//validar por ID
     public Optional<Order> getOrder(int order) {
         return orderRepo.findById(order);
     }
 	
     //find by zone
     public List<Order> findZone(String zone) {
-    	return orderRepo.findBySalesManZone(zone);
+		return orderRepo.findBySalesManZone(zone);
     }
 }

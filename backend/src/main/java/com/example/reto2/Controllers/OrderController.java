@@ -48,13 +48,13 @@ public class OrderController {
         return orderServ.getOrder(order);
     }
 	
-	 @PutMapping("/order/update")
-	    @ResponseStatus(HttpStatus.CREATED)
-	    public Order update(@RequestBody Order order) {
-	        return orderServ.save(order);
-	  }
-	 
-	 @GetMapping("/order/zona/{zone}")
+	@PutMapping("/order/update")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Order update(@RequestBody Order order) {
+		return orderServ.save(order);
+	}
+	
+	@GetMapping("/order/zona/{zone}")
 	public List<Order> getZone( @PathVariable("zone") String zone) {
 		return orderServ.findZone(zone);
 	}
