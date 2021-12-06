@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.reto2.CrudRepository.OrderRepository;
-import com.example.reto2.Models.Documents.Chocolate;
+
 import com.example.reto2.Models.Documents.Order;
-import com.example.reto2.Models.Documents.User;
 import com.example.reto2.Services.OrderService;
 
 @RestController

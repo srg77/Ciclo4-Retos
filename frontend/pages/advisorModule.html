@@ -19,19 +19,20 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body id="page-top" class="back-register">
+<body class="back-register">
     <header id="nav-placeholder">
 
     </header>
-    <div class="container mt-5 mb-4  d-flex justify-content-evenly align-items-center w-100">
+    <div class="container mt-5 d-flex justify-content-center align-items-center w-100">
 
-        <div class="container border back-color w-100">
-            <div class="row p-5 w-100">
+        <div class="container border back-color w-100 mb-5">
+            <div class="container p-5 w-100">
                 <h1 class="mb-4 text-center">Bienvenido <span id="userName"></span> </h1>
-                <hr width="500">
-                <h3 class="text-center">Orden de Pedido</h3>
-                <div class="container pt-4 pb-4 w-100">
-                    <table class="table table-dark table-striped w-90" border="1" >
+                
+                <h3 class="text-center">Mi Perfil</h3>
+                <hr width="100%">
+                <div class="table-responsive mx-auto w-75">
+                    <table class="table table-dark table-striped" border="1" >
                         <thead>
                             <tr>
                                 <th class="text-center">Identificacion</th>
@@ -50,44 +51,46 @@
                                 <td class="text-center">Sin info</td>
                                 <td class="text-center">Sin info</td>
                             </tr>
-                            
                         </tbody>
                     </table>
 
                     
                 </div>
-                <div class="container pt-4 pb-4 w-100">
-                    <table class="table table-dark table-striped w-90" border="1" id="tablaid">
+                <h3 class="text-center">Orden de Pedido</h3>
+                <hr width="100%">
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped" border="1">
                         <thead>
                             <tr>
                                 <th class="text-center">Categoria</th>
                                 <th class="text-center">Referencia</th>
                                 <th class="text-center">Descripcion</th>
-                                <th class="text-center">Disponibilidad</th>
                                 <th class="text-center">Precio</th>
-                                <th class="text-center">Fotografía</th>
+                                <th class="text-center" style="width: 18%;">Fotografía</th>
                                 <th class="text-center">Cantidad</th>
                                 <th class="text-center">Opciones</th>
                             </tr>
                         </thead>
         
-                        <tbody id="table-body-orders">
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
-                            <td class="text-center">Sin info</td>
+                        <tbody id="table-body-orders" >
+                            <tr>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                                <td class="text-center">Sin info</td>
+                            </tr>
                         </tbody>
                     </table>
 
-                    <div class="row d-flex justify-content-end w-90 mx-auto" >
-                        <button class="w-18 btn btn-primary text-center ">Enviar Solicitud Pedido</button>
-                    </div>
+                    
                 </div>
-                
+                <div class="row d-flex justify-content-end pe-3" >
+                    <button class="btn btn-info text-center w-18" onclick="getOrders()">Enviar Solicitud Pedido</button>
+                </div>
 
                     
 

@@ -4,13 +4,16 @@ $("#name-user").text(userNameGlobal);
 $(function(){
     $("#nav-placeholder").load("nav.html");
 });
-
+var infoUser = {};
+const quantitiesTemp = {};
+const products = new Object();
 $(function(){
     getProducts();
     let urlPage = jQuery(location).attr('href');
-    let userName = getParameters(urlPage);
-    console.log(userName[0]);
-    getInfoUser(userName[0]);
+    let userCode = getParameters(urlPage);
+    idUser = userCode;
+    console.log(userCode[0]);
+    getInfoUser(userCode[0]);
     
 });
 //funcion usando notación flecha. obtiene los parámetros de la url de la página actual
@@ -28,7 +31,7 @@ const getParameters = (urlPage) =>{
 
     return parametros;
 }
-//función para obtener todas las ordenes
+//función para obtener la informacion del asesor
 const getInfoUser = (idUser) => {
     
     $.ajax({
@@ -38,13 +41,14 @@ const getInfoUser = (idUser) => {
         success: function(respuesta){
             console.log(respuesta);
             fillTableInfoUser(respuesta);
+            infoUser = respuesta;
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
         }
     });
 }
-//función para obtener todas las ordenes
+//función para obtener todos los productos disponibles
 const getProducts = () => {
     
     $.ajax({
@@ -52,13 +56,14 @@ const getProducts = () => {
         type: 'GET',
         dataType: 'json',
         success: function(respuesta){
-            fillTable(respuesta);
+            fillTableProducts(respuesta);
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
         }
     });
 }
+//función para llenar la tabla de usuario con la info correspondiente
 const fillTableInfoUser = (respuesta) => {
     $("#userName").text(respuesta.name);
     $("#table-body-user").empty();
@@ -70,52 +75,174 @@ const fillTableInfoUser = (respuesta) => {
         $("#table-body-user").append("<td class='text-center'>"+respuesta.email+"</td>");
         $("#table-body-user").append("<td class='text-center'>"+respuesta.zone+"</td>");
         $("#table-body-user").append("<td class='text-center'>"+respuesta.type+"</td>");
-        // $("#table-body-users").append("<td id='"+nombreIdButtons+"' class='text-center'>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
-        //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
-        // $("#tbodyUsers").append("</td>");
-        // $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Agregar</a>");
-        // $(identIdUpdate).click(() => fillInformation(objeto));
-        
-        // $(idButtonGroup).append("<a id='"+nombreIdDelete+"' class='btn btn-primary text-center'>Eliminar</a>");
-        // $(identIdDelete).click(() => removeUser(item));
-    
         $("#table-body-user").append("</tr>");
     
 }
-const fillTable = (respuesta) => {
+const fillTableProducts = (respuesta) => {
 
     $("#table-body-orders").empty();
     for (var i=0; i < respuesta.length; i++) {
 
-        let nombreIdButtons = "buttons"+i
-        let nombreId = "botonDet"+i
-        let nombreIdDelete = "botonDel"+i
-        let idButtonGroup = "#"+nombreIdButtons
-        let identIdUpdate = "#"+nombreId
+        let nombreIdButtons = "buttons"+i;
+        let idButtonGroup = "#"+nombreIdButtons;
+
+        let nameIdInput = "quanInput"+i;
+        let identInput = "#"+nameIdInput;
+
+        let nombreIdAdd = "buttonAdd"+i;
+        let identAdd = "#"+nombreIdAdd;
+
+        let nombreIdDelete = "botonDel"+i;
         let identIdDelete ="#"+nombreIdDelete;
         
-        let item = respuesta[i].reference;
-        let objeto = respuesta[i];
+        let idProduct = respuesta[i].reference;
+        let product = respuesta[i];
 
-        $("#table-body-orders").append("<tr class='border-bottom'>");
-        $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].reference + "</td>");
-        $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].category + "</td>");
-        $("#table-body-orders").append("<td class='text-center col-md-2'>" + respuesta[i].description + "</td>");
-        $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].availability + "</td>");
-        $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].price + "</td>");
-        $("#table-body-orders").append("<td class='text-center col-md-1'>" + respuesta[i].photography + "</td>");
-        $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].quantity + "</td>");
-        $("#table-body-orders").append("<td id='"+nombreIdButtons+"' class='text-center'>");
+        let fila = `<tr class='w-100'>`;
+        fila += `   <td class='text-center'> ${respuesta[i].reference}</td>
+                    <td class='text-center'> ${respuesta[i].category}</td>
+                    <td class='text-center'> ${respuesta[i].description} </td>
+                    <td class='text-center'> ${respuesta[i].price} </td>
+                    <td class='text-center'>
+                        <img src='${respuesta[i].photography}' alt='imagen del producto' class='w-25'>
+                    </td>
+                    <td class='text-center'>
+                        <input type='number' id='${nameIdInput}' class='form-control' maxlength="10"></input>
+                    </td>
+                    <td id='${nombreIdButtons}' align-item-center'>
+                        <button class='btn btn-primary' id='${nombreIdAdd}'>Agregar</button>
+                        <button id='${nombreIdDelete}' class='btn btn-danger'>Eliminar</button>
+                    </td> `;
+        // $("#table-body-orders").append("<tr class='border-bottom'> <td class='text-center'>" + respuesta[i].reference + "</td>");
+        // $("#table-body-orders").append("");
+        // $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].category + "</td>");
+        // $("#table-body-orders").append("<td class='text-center col-md-2'>" + respuesta[i].description + "</td>");
+        // $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].availability + "</td>");
+        // $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].price + "</td>");
+        // $("#table-body-orders").append("<td class='text-center' style='width:20%' >" + respuesta[i].photography + "</td>");
+        // $("#table-body-orders").append("<td class='text-center'>" + respuesta[i].quantity + "</td>");
+        // $("#table-body-orders").append("<td id='"+nombreIdButtons+"' class='text-center'>");
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\""+nombreId+"\" onclick=llenarCampos("+objeto+")>Actualizar</a>");
         //$(idButtonGroup).append("<a class=\"btn btn-primary text-center\" onclick=removeProduct("+item+")>Eliminar</a>");
         // $("#tbodyUsers").append("</td>");
-        $(idButtonGroup).append("<a class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Agregar</a>");
-        $(identIdUpdate).click(() => fillInformation(objeto));
+        // $(idButtonGroup).append("<button class=\"btn btn-primary text-center me-2\" id=\'"+nombreId+"'>Agregar</button>");
+        // $(identIdUpdate).click(() => addProduct(objeto));
         
-        $(idButtonGroup).append("<a id='"+nombreIdDelete+"' class='btn btn-primary text-center'>Eliminar</a>");
-        $(identIdDelete).click(() => removeUser(item));
-    
-        $("#table-body-orders").append("</tr>");
+        // $(idButtonGroup).append("<button id='"+nombreIdDelete+"' class='btn btn-primary text-center'>Eliminar</button>");
+        // $(identIdDelete).click(() => removeUser(item));
+        $("#table-body-orders").append(fila);
+        
+        // $(identInput).change( () =>{
+        //     quantity = $( this ).val();
+        //     console.log(quantity);
+        //     }
+        // );
+        let quantity = 0;
+        $(identInput).change(function() {
+                quantity = $(identInput).val();
+        });
+        $(identAdd).click(() => {
+            
+            console.log(`la cantidad ingresada es: ${quantity}`)
+            addProduct(product,quantity,identInput);
+        });
+        $(identIdDelete).click(() => removeUser(product));
+        // $("#table-body-orders").append("</td>");
+        // $("#table-body-orders").append(" </tr>");
     }
+}
+
+const addProduct = (product, quantity, identInput) => {
+    alert("Agrego producto para orden, la cantidad es: "+quantity);
+
+    let referenceProduct = "";
+    referenceProduct = `${product.reference}`;
+    // console.log(referenceProduct);
+
+    if(!(referenceProduct in products)){
+
+        products[referenceProduct] = product;
+        
+    }
+    if(!(referenceProduct in quantitiesTemp)){
+
+        quantitiesTemp[referenceProduct] = quantity;
+        console.log(quantitiesTemp);
+    }
+    $(identInput).val("");
+    // console.log(products);
+
+}
+
+const removeUser = (product) => {
+    alert("Elimino producto de la orden");
+    let referenceProduct = "";
+    referenceProduct = `${product.reference}`;
+
+    if( referenceProduct in products )
+    {
+        delete products[referenceProduct];
+        delete quantitiesTemp[referenceProduct];
+    }
+}
+const getOrders = () => {
+    if(confirm("Desea agregar los productos a una nueva orden")){
+        $.ajax({
+            url: url+'/api/order/all',
+            type: 'GET',
+            dataType: 'json',
+    
+            success: function(respuesta){
+                console.log(respuesta.length);
+                sendOrder(respuesta.length);
+            },
+            error: function (xhr, status) {
+                alert('no se encontraron ordenes');
+            }
+        })
+    }
+    
+}
+
+const sendOrder = (idOrder) => {
+
+    //Se genera un id único para la nueva orden a partir de la longitud del objeto que contine las ordenes registradas
+    idOrder+=1;
+    console.log(idOrder);
+
+    let registerDate = new Date();
+    // let dateFormat = registerDate.getFullYear()+'-'+(registerDate.getMonth()+1)+'-'+registerDate.getDate();
+
+    // console.log(dateFormat);
+
+    const order = {
+        id: idOrder,
+        registerDay: registerDate,
+        status: "Pendiente",
+        salesMan: infoUser,
+        products: products,
+        quantities: quantitiesTemp
+    }
+    console.log(order);
+    $.ajax (
+        {
+            url          : url+'/api/order/new',
+            type         : 'POST',
+            contentType  : "application/json;charset-UTF-8",
+            dataType     : 'JSON',
+            data         :  JSON.stringify(order),
+
+            success      :  function(response){
+                                console.log(response);
+                                alert("Orden registrada");
+                                getProducts();
+                            },
+            error       :   function(xhr,status){
+                            console.log(status);
+                            alert("Fallo al registrar la orden");
+                            }
+                        
+        }
+    );
+
 }

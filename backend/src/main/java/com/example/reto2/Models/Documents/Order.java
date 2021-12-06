@@ -78,8 +78,7 @@ public class Order {
 		this.quantities = quantities;
 	}
 	public Order() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}   
     
     
