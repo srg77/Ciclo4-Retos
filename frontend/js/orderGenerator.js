@@ -5,8 +5,8 @@ $(function(){
     $("#nav-placeholder").load("nav.html");
 });
 var infoUser = {};
-const quantitiesTemp = {};
-const products = new Object();
+var quantitiesTemp = {};
+var products = new Object();
 $(function(){
     getProducts();
     let urlPage = jQuery(location).attr('href');
@@ -194,7 +194,7 @@ const getOrders = () => {
     
             success: function(respuesta){
                 console.log(respuesta.length);
-                sendOrder(respuesta.length);
+                sendOrder(respuesta);
             },
             error: function (xhr, status) {
                 alert('no se encontraron ordenes');
@@ -204,8 +204,19 @@ const getOrders = () => {
     
 }
 
-const sendOrder = (idOrder) => {
+const sendOrder = (orders) => {
 
+    let idOrder =0;
+    console.log(orders);
+    let bigger = 0;
+    orders.forEach(order => {
+        
+        if(order.id > bigger){
+            bigger = order.id
+        }
+    });
+    idOrder = bigger;
+    console.log(`El id mas grande es ${bigger}`);
     //Se genera un id único para la nueva orden a partir de la longitud del objeto que contine las ordenes registradas
     idOrder+=1;
     console.log(idOrder);
@@ -218,12 +229,13 @@ const sendOrder = (idOrder) => {
     const order = {
         id: idOrder,
         registerDay: registerDate,
-        status: "Pendiente",
+        status: null,
         salesMan: infoUser,
         products: products,
         quantities: quantitiesTemp
     }
     console.log(order);
+    
     $.ajax (
         {
             url          : url+'/api/order/new',
@@ -235,6 +247,8 @@ const sendOrder = (idOrder) => {
             success      :  function(response){
                                 console.log(response);
                                 alert("Orden registrada");
+                                quantitiesTemp = {};
+                                products = {};
                                 getProducts();
                             },
             error       :   function(xhr,status){
