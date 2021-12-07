@@ -184,6 +184,11 @@ function showUniqueProduct(item) {
 
 function updateProduct(){
 
+
+
+ 
+
+
     let product = {
         reference: $("#reference").val(),
         category: $("#category").val(),

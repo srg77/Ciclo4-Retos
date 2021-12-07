@@ -140,19 +140,23 @@ const fillTableProducts = (respuesta) => {
         let quantity = 0;
         $(identInput).change(function() {
                 quantity = $(identInput).val();
+              
         });
+        console.log("prueba quantity"+ quantity);
         $(identAdd).click(() => {
             
             console.log(`la cantidad ingresada es: ${quantity}`)
             addProduct(product,quantity,identInput);
         });
-        $(identIdDelete).click(() => removeUser(product));
+        $(identIdDelete).click(() => removeUser(product, identInput));
         // $("#table-body-orders").append("</td>");
         // $("#table-body-orders").append(" </tr>");
     }
 }
 
 const addProduct = (product, quantity, identInput) => {
+
+   
     alert("Agrego producto para orden, la cantidad es: "+quantity);
 
     let referenceProduct = "";
@@ -164,17 +168,21 @@ const addProduct = (product, quantity, identInput) => {
         products[referenceProduct] = product;
         
     }
-    if(!(referenceProduct in quantitiesTemp)){
+    console.log(quantitiesTemp);
+    console.log(referenceProduct +" in " +quantitiesTemp +"  &&  " + quantity + "  !==   "+  quantitiesTemp[referenceProduct]);
+    
+    if((quantity !== quantitiesTemp[referenceProduct] )){
 
         quantitiesTemp[referenceProduct] = quantity;
+       
         console.log(quantitiesTemp);
     }
-    $(identInput).val("");
+   //
     // console.log(products);
 
 }
 
-const removeUser = (product) => {
+const removeUser = (product, identInput) => {
     alert("Elimino producto de la orden");
     let referenceProduct = "";
     referenceProduct = `${product.reference}`;
@@ -184,6 +192,7 @@ const removeUser = (product) => {
         delete products[referenceProduct];
         delete quantitiesTemp[referenceProduct];
     }
+    $(identInput).val("");
 }
 const getOrders = () => {
     if(confirm("Desea agregar los productos a una nueva orden")){
