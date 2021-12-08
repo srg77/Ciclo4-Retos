@@ -1,5 +1,8 @@
 package com.example.reto2.Services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +56,32 @@ public class OrderService {
     //find by zone
     public List<Order> findZone(String zone) {
 		return orderRepo.findBySalesManZone(zone);
+    }
+    
+    //find by fecha y id
+    public List<Order> findIdAndDate(Integer id, String registerDay) {
+
+		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateOne = new Date();
+
+		try {
+			dateOne = parser.parse(registerDay);
+		} catch (ParseException e) {
+
+			e.printStackTrace();
+		}
+		return orderRepo.findBySalesManIdAndRegisterDay(id, dateOne);
+    }
+    
+    //find by status y id
+    public List<Order> findIdAndStatus(Integer id, String status) {
+    	
+		return orderRepo.findBySalesManIdAndStatus(id, status);
+    }
+    
+    //find by idUser
+    public List<Order> findIdUser(Integer id) {
+    	
+		return orderRepo.findBySalesManId(id);
     }
 }

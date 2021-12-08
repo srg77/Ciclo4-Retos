@@ -1,5 +1,6 @@
 package com.example.reto2.CrudRepository;
 
+import java.util.Date;
 import java.util.List;
 // import java.util.Optional;
 
@@ -14,5 +15,9 @@ public interface OrderRepository extends MongoRepository<Order, Integer>{
 	
 	public List<Order> findBySalesManZone(String salesMan);
 	
+	public List<Order> findBySalesManIdAndStatus(Integer id, String status);
 	
+	public List<Order> findBySalesManIdAndRegisterDay(Integer id, Date registerDay);
+	
+	public List<Order> findBySalesManId(Integer id);
 }

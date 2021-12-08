@@ -1,5 +1,6 @@
 package com.example.reto2.Controllers;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,12 +35,10 @@ public class OrderController {
 		return orderServ.save(order);
 	}
 	
-	
 	@GetMapping("/order/all")
 	public List<Order> getAllOrders() {
 		return orderServ.getOrders();
 	}
-	
 	
 	@GetMapping("/order/{id}")
     public Optional<Order> getOrder(@PathVariable("id") int order) {
@@ -56,6 +55,21 @@ public class OrderController {
 	public List<Order> getZone( @PathVariable("zone") String zone) {
 		return orderServ.findZone(zone);
 	}
+	
+	@GetMapping("/order/date/{fecha}/{id}")
+	public List<Order> getDateAndId( @PathVariable("fecha") String fecha, @PathVariable("id") Integer id) {
+		return orderServ.findIdAndDate(id, fecha);
+	}
+	
+	@GetMapping("/order/state/{status}/{id}")
+	public List<Order> getstatusAndId( @PathVariable("status") String status, @PathVariable("id") Integer id) {
+		return orderServ.findIdAndStatus(id, status);
+	}
+	@GetMapping("/order/salesman/{id}")
+	public List<Order> geIdUser(@PathVariable("id") Integer id) {
+			return orderServ.findIdUser(id);
+	}
+	
 }
 
 

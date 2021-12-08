@@ -91,6 +91,11 @@ public class UserController {
         return service.deleteUser(userId);
     }
     
+    /**
+     * 
+     * Metodo para buscar por id al usuario
+     * 
+     */
     @GetMapping("/{id}")
     public Optional<User> getAdmin(@PathVariable("id") int userid) {
         return service.getUser(userid);
