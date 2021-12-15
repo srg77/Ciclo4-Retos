@@ -27,11 +27,23 @@ public class ChocolateController {
     @Autowired
 	private ChocolateService productService;
 
+    @GetMapping("/{id}")
+    public Optional<Chocolate> getId(@PathVariable("id") String productId) {
+		return productService.getProduct(productId);
+	}
+
 	@GetMapping("/all")
 	public List<Chocolate> getAll() {
 		return productService.getProducts();
 	}
-
+    @GetMapping("/price/{value}")
+	public List<Chocolate> getProductsByPrice(@PathVariable("value") double productPrice) {
+		return productService.getProductsByPrice(productPrice);
+	}
+    @GetMapping("/description/{word}")
+	public List<Chocolate> getProductsByPrice(@PathVariable("word") String description) {
+		return productService.getProductsByDescription(description);
+	}
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/new")
 	public Chocolate createProduct(@RequestBody Chocolate product) {
@@ -50,10 +62,7 @@ public class ChocolateController {
         return productService.deleteProduct(productId);
     }
     
-    @GetMapping("/{id}")
-    public Optional<Chocolate> getId(@PathVariable("id") String productId) {
-		return productService.getProduct(productId);
-	}
+    
 
 
     

@@ -25,6 +25,12 @@ public class UserService {
     public List<User> getUsers() {
         return userRepo.findAll();
     }
+    /**
+	* método para listar usuarios por mes de cumpleaños
+	*/
+    public List<User> findUsersByBirthday(String monthBirthDay) {
+        return userRepo.findByMonthBirthtDay(monthBirthDay);
+    }
 
     /**
 	* método para agregar o actualizar un usuario
@@ -96,4 +102,6 @@ public class UserService {
     public List<User> getUserZone() {
         return userRepo.findAll();
     }
+
+   
 }

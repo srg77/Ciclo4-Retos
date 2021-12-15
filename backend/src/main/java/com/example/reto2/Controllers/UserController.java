@@ -64,6 +64,14 @@ public class UserController {
 		return service.getValidationEmail(userEmail);
 	}
 
+	@GetMapping("/birthday/{month}")
+	/**
+	* método para validar email de usuario
+	*/
+	public List<User> findUsersByBirthday(@PathVariable("month") String monthBirthDay) {
+		return service.findUsersByBirthday(monthBirthDay);
+	}
+
 	@GetMapping("/{email}/{password}")
 	/**
 	* método para validar credenciales de usuario

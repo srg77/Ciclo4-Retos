@@ -23,6 +23,14 @@ public class ChocolateService {
 
         return chocolateRepo.findAll();
     }
+
+    public List<Chocolate> getProductsByPrice(double productPrice){
+        return chocolateRepo.findByPriceLessThanEqual(productPrice);
+    }
+
+    public List<Chocolate> getProductsByDescription(String description){
+        return chocolateRepo.findByDescriptionLikeIgnoreCase(description);
+    }
     /**
      * Guardar o actualizar producto
      */
