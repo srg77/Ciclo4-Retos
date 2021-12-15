@@ -7,25 +7,34 @@ import com.example.reto2.Models.Documents.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Clase servicios sobre usuarios
+ */
 @Service
 public class UserService {
 
+    /**
+    * objeto tipo repositorio para crud
+    */
     @Autowired
     private UserRepository userRepo;
 
-    // listar todos los usuarios
+    /**
+	* método para listar todos los usuarios
+	*/
     public List<User> getUsers() {
         return userRepo.findAll();
     }
 
-    // Guardar usuario
+    /**
+	* método para agregar o actualizar un usuario
+	*/
     public User save(User user) {
         if (user.getId() != null) {
             return userRepo.save(user);
         } else {
-            Optional<User> e = userRepo.findById(user.getId());
-            if (e == null) {
+            Optional<User> elemento = userRepo.findById(user.getId());
+            if (elemento == null) {
                 return userRepo.save(user);
             } else {
                 return user;
@@ -34,50 +43,56 @@ public class UserService {
         }
     }
 
-    // validacion de email
+    /**
+	* método para validar email de usuario
+	*/
     public boolean getValidationEmail(String userEmail) {
 
-        if (userRepo.getEmail(userEmail).isPresent()) {
-            return true;
-        } else {
-            return false;
-        }
+        return userRepo.getEmail(userEmail).isPresent();
+    
     }
 
-    // validacion email-contraseña
-
+    /**
+	* método para validar credenciales de usuario
+	*/
     public User getValidationCredentials(String userEmail, String userPassword) {
 
-        User respuestaCredenciales;
+        User respuestaCred;
         Optional<User> respuesta = userRepo.getEmailAndPassword(userEmail, userPassword);
 
         if (!respuesta.isPresent()) {
-            respuestaCredenciales = new User(null, null, null, null, null, null, null, null, null, null, null);
+            respuestaCred = new User(null, null, null, null, null, null, null, null, null, null, null);
 
         } else {
-            respuestaCredenciales = respuesta.get();
+            respuestaCred = respuesta.get();
         }
 
-        return respuestaCredenciales;
+        return respuestaCred;
     }
 
     
 
-    // eliminar registro
+    /**
+	* método para eliminar usuario
+	*/
     public boolean deleteUser(Integer userId) {
-        Boolean aBoolean = getUser(userId).map(usuario -> {
+        return getUser(userId).map( usuario -> {
             userRepo.delete(usuario);
             return true;
         }).orElse(false);
-        return aBoolean;
+        
     }
     
-    //validar por ID
+    /**
+	* método para obtener usuario por id
+	*/
     public Optional<User> getUser(Integer userid) {
         return userRepo.findById(userid);
     }
 
-    //validar por zona
+    /**
+	* método para listar usuarios por zona
+	*/
     public List<User> getUserZone() {
         return userRepo.findAll();
     }

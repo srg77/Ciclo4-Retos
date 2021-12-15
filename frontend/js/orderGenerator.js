@@ -168,13 +168,12 @@ const addProduct = (product, quantity, identInput) => {
         products[referenceProduct] = product;
         
     }
-    console.log(quantitiesTemp);
-    console.log(referenceProduct +" in " +quantitiesTemp +"  &&  " + quantity + "  !==   "+  quantitiesTemp[referenceProduct]);
+    // console.log(quantitiesTemp);
+    // console.log(referenceProduct +" in " +quantitiesTemp +"  &&  " + quantity + "  !==   "+  quantitiesTemp[referenceProduct]);
     
     if((quantity !== quantitiesTemp[referenceProduct] )){
 
         quantitiesTemp[referenceProduct] = quantity;
-       
         console.log(quantitiesTemp);
     }
    //
