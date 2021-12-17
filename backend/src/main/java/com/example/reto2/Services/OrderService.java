@@ -2,6 +2,9 @@ package com.example.reto2.Services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -59,18 +62,28 @@ public class OrderService {
     }
     
     //find by fecha y id
-    public List<Order> findIdAndDate(Integer id, String registerDay) {
+    public List<Order> findIdAndDate(String registerDay, Integer id ) {
+
+		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		LocalDateTime localDate =  LocalDate.parse(registerDay, formatoFecha).atStartOfDay();
+		
 
 		SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateOne = new Date();
+		// Date dateOne = new Date();
 
-		try {
-			dateOne = parser.parse(registerDay);
-		} catch (ParseException e) {
+		// try {
 
-			e.printStackTrace();
-		}
-		return orderRepo.findBySalesManIdAndRegisterDay(id, dateOne);
+		// 	// dateOne = parser.parse(registerDay);
+
+		// 	System.out.println(registerDay);
+			System.out.println(localDate);
+
+		// } catch (ParseException e) {
+
+		// 	e.printStackTrace();
+		// }
+		return orderRepo.findByRegisterDayAndSalesManId(localDate, id);
     }
     
     //find by status y id
